@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Dataviz ENSAR - Institut des Actuaires</title>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
+        header { text-align: center; padding: 20px; background: #004080; color: white; position: relative; }
+        header img { position: absolute; top: 20px; height: 60px; }
+        .logo-left { left: 20px; }
+        .logo-right { right: 20px; }
+        h1 { font-size: 1.8em; margin: 0; }
+        section { max-width: 1000px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h2 { color: #004080; margin-bottom: 10px; }
+        iframe { width: 100%; height: 500px; border: none; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <header>
+        images/logo_ensar.png
+        <img src="images/logo_institut   <h1>Quels territoires offrent le meilleur compromis entre attractivité immobilière et faible exposition aux risques naturels pour sécuriser les investissements à long terme ?</h1>
+    </header>
+
+    <section>
+        <h2>1. Introduction</h2>
+        <p>Les risques naturels tels que le retrait-gonflement des argiles (RGA) et les inondations par remontée de nappes (IRN) constituent un enjeu majeur pour la résilience climatique, le marché immobilier et la gestion des assurances en France. Cette étude vise à analyser l'impact de ces aléas sur les transactions immobilières afin d'identifier les zones à forte exposition, anticiper les tendances du marché et fournir des outils d'aide à la décision pour les investisseurs et les pouvoirs publics.</p>
+    </section>
+
+    <section>
+        <h2>2. Bases de données</h2>
+        <p>Notre analyse repose sur les bases DVF (transactions immobilières), RGA (risque retrait-gonflement des argiles) et IRN (inondations par remontée de nappes), enrichies par les arrêtés CatNat. Des jointures spatiales ont été réalisées pour croiser ces informations.</p>
+        <iframe src="carte_interactive_dvf_rga_couleur.html     carte_interactive_dvf_inon_couleur.html</iframe>
+    </section>
+
+    <section>
+        <h2>3. Analyse</h2>
+        <p>À l'échelle nationale, 66 % des habitations sont exposées au risque RGA et 71 % au risque IRN en 2024. Une analyse départementale et un scoring combiné permettent d'identifier les zones à privilégier ou à éviter.</p>
+        <iframe src="carte_interactive_code_dep.html</iframe>
+        <iframe src="classement_investissement_selection_donnees.html </section>
+
+    <section>
+        <h2>4. Bilan & Conclusion</h2>
+        <p>D’après l’analyse, notre équipe ENSAR recommande le département des Côtes-d’Armor, en cohérence avec un profil risquophobe, grâce à une faible exposition aux risques et un marché attractif (≈ 1 800 €/m²). En second choix, la Loire-Atlantique offre un compromis intéressant.</p>
+    </section>
+</body>
+</html>
