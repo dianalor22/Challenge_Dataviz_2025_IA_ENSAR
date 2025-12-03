@@ -46,27 +46,43 @@
     .grid-2{display:grid;grid-template-columns:1fr;gap:1rem}
     @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}}
   </style>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <h1>Challenge DataVisualisation en Actuariat 2025 </h1>
-      <p class="muted">Étude des risques <strong>RGA</strong> (Retrait‑Gonflement des Argiles) et <strong>IRN</strong> (Inondation par Remontée de Nappes)
-        et impacts sur l’investissement immobilier_ réalisée par l'équipe ENSAR ( Diana Lor RATEFY et Juliette CÊTRE)  </p>
-    </div>
-  </header>
 
-  <!-- Sommaire -->
-  <nav class="toc">
-    <div class="wrap">
-      #Problématique</a>
-      #Introduction</a>
-      #Bases de données </a>
-      #Analyse — Échelle nationale</a>
-      #Analyse — Échelle départementale</a>
-      #Conclusion</a>
+
+  
+<header>
+  <div class="container">
+    <!-- Barre des logos -->
+    <div class="header-logos" aria-label="Logos">
+      ensar.jpg
+      logo_ia.jpg
     </div>
-  </nav>
+
+    <!-- Titre & sous-titre -->
+    <h1>Challenge DataVisualisation en Actuariat 2025</h1>
+    <p class="muted">
+      Étude des risques <strong>RGA</strong> (Retrait‑Gonflement des Argiles) et <strong>IRN</strong>
+      (Inondation par Remontée de Nappes) et impacts sur l’investissement immobilier — réalisée par
+      l'équipe ENSAR (Diana‑Lor RATEFY et Juliette CÊTRE)
+    </p>
+  </div>
+</header>
+
+
+
+
+  
+<!-- Sommaire -->
+<nav class="toc">
+  <div class="wrap">
+    #problematiqueProblématique</a>
+    #introductionIntroduction</a>
+    #Bases de données </a>
+    #analyse-nationaleAnalyse : Échelle nationale</a>
+    #analyse-depAnalyse : Échelle départementale</a>
+    #conclusionConclusion</a>
+  </div>
+</nav>
+
 
   <main class="container">
 
@@ -94,18 +110,39 @@
           <h3>IRN — Inondation par remontée de nappes</h3>
           <p>L’IRN correspond à la possibilité que l’eau souterraine atteigne la surface du sol, les fondations ou les sous‑sols des bâtiments lorsque la recharge dépasse la capacité d’évacuation (pluie, infiltration, saturation des sols). Les sols <em>peu perméables</em> (ex. argileux) sont particulièrement exposés. <!-- PDF p.2 --> </p>
           <figure>
-            <img src="img_irn_schema.png" alt="Schéma IRN (remontée de nappe vers surfacetre image).</figcaption>
+            <img src="irn.png" />
+               <figcaption>Illustration du mécanisme d’IRN.</figcaption>
           </figure>
         </div>
 
         <div class="card">
           <h3>RGA — Retrait‑gonflement des argiles</h3>
           <p>Le RGA survient lorsque la teneur en eau des sols argileux varie : retrait en période sèche, gonflement après fortes pluies. Ces variations déforment progressivement le sol, causant des désordres (fissures) surtout sur les maisons individuelles aux fondations superficielles. <!-- PDF p.3 --> </p>
+          <figure>
+            <img src="rga.png" />
+               <figcaption>Illustration du mécanisme de RGA.</figcaption>
+          </figure>
+          
           <details>
             <summary>Éléments clés récents</summary>
             <ul>
-              <li>Depuis 2015 : sécheresses plus intenses et longues ; part des sécheresses dans les CatNat indemnisées passée de 37% à 60% (2016‑2021). <!-- PDF p.3 --></li>
-              <li>Arrêté du 23/07/2024 : 1654 communes reconnues en RGA (contre 44 au 26/07/2016 ; 42 en Seine‑et‑Marne, 2 dans l’Yonne). <!-- PDF p.3 --></li>
+              <li>
+                Depuis 2015, la France métropolitaine connaît des sécheresses de plus en plus intenses et fréquentes,
+                pendant des périodes plus longues du fait du changement climatique. D'après les données de France Assureurs, 
+                la part des sécheresses dans les catastrophes naturelles indemnisées par le régime
+                Cat-Nat est passée de 37 % à 60 % au cours de la période 2016-2021 en termes de charge financière cumulée.
+
+              </li>
+              <li>
+                En 2001, la vallée de la Somme a connu une importante montée de la nappe phréatique, 
+                provoquant des inondations lentes et prolongées. La remontée de nappe a contribué à environ 80 %
+                du débit du fleuve pendant cet épisode, entraînant des dommages aux caves, sous-sols, habitations basses et infrastructures.
+Après ces inondations, le Bureau de Recherches Géologiques et Minières (BRGM) 
+                a réalisé une étude nationale pour identifier les secteurs exposés aux remontées de nappes. 
+                Cette étude a abouti à la publication de l’Atlas des remontées de nappes en France métropolitaine.
+                Selon InfoTerre, les zones les plus vulnérables sont les vallées, les plaines basses et les bassins sédimentaires superficiels,
+                comme les terrains calcaires ou crayeux, où les nappes sont proches de la surface.
+              </li>
             </ul>
           </details>
         </div>
