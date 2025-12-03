@@ -1,0 +1,290 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RGA & IRN — Attractivité immobilière vs. exposition aux risques</title>
+  <meta name="description" content="Étude RGA et IRN : concilier attractivité immobilière et exposition aux risques naturels pour orienter les décisions d’investissement." />
+  <style>
+    :root{
+      --bg:#0f1220; --panel:#171a2b; --muted:#9aa4bf; --text:#e7ebff;
+      --accent:#5eb1ff; --accent2:#ffd166; --ok:#70e000; --warn:#f8961e; --bad:#ef476f;
+      --border:#2a2f47;
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    header{padding:2.4rem 1.2rem 1rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(94,177,255,.08),transparent);}
+    .container{max-width:1050px;margin:0 auto;padding:0 1.2rem;}
+    h1{font-size:1.9rem;margin:0 0 .25rem;line-height:1.2;}
+    h2{margin:2.2rem 0 .8rem;font-size:1.4rem;border-left:4px solid var(--accent);padding-left:.6rem;}
+    h3{margin:1.4rem 0 .6rem;font-size:1.1rem;color:#d8e4ff}
+    p{line-height:1.65;margin:.6rem 0;}
+    .muted{color:var(--muted)}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:1rem 0;}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:1rem;}
+    .kpi{font-weight:700;color:#fff}
+    .tag{display:inline-block;padding:.18rem .5rem;border:1px solid var(--border);border-radius:999px;margin:.15rem .2rem;background:#14182a}
+    nav.toc{position:sticky;top:0;background:rgba(15,18,32,.8);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);z-index:10}
+    nav.toc .wrap{display:flex;gap:.8rem;overflow:auto;padding:.6rem 1.2rem}
+    nav.toc a{white-space:nowrap;color:var(--muted);text-decoration:none;font-size:.92rem;padding:.35rem .6rem;border-radius:8px;border:1px solid transparent}
+    nav.toc a:hover, nav.toc a:focus{color:#fff;border-color:var(--border);background:#13172a}
+    figure{margin:1rem 0}
+    figure img{max-width:100%;height:auto;border-radius:8px;border:1px solid var(--border)}
+    figcaption{font-size:.9rem;color:var(--muted);margin-top:.25rem}
+    .iframe-wrap{border:1px dashed var(--border);border-radius:10px;overflow:hidden;background:#121528}
+    .iframe-wrap iframe{width:100%;height:520px;border:0;background:#0a0c16}
+    details{border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;background:#14182a;margin:.8rem 0}
+    details[open]{background:#101326}
+    summary{cursor:pointer;font-weight:600}
+    .source-list li{margin:.4rem 0}
+    .callout{border-left:4px solid var(--accent2);padding:.6rem .9rem;background:#14182a;border-radius:8px}
+    .good{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+    footer{margin:3rem 0 4rem;color:var(--muted)}
+    code{background:#11162a;border:1px solid var(--border);padding:.1rem .35rem;border-radius:6px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Concilier attractivité immobilière et exposition aux risques naturels</h1>
+      <p class="muted">Étude des risques <strong>RGA</strong> (retrait‑gonflement des argiles) et <strong>IRN</strong> (inondation par remontée de nappes) et impacts sur l’investissement immobilier. <!-- contenu issu du PDF --> </p>
+    </div>
+  </header>
+
+  <!-- Sommaire -->
+  <nav class="toc">
+    <div class="wrap">
+      #problematiqueProblématique</a>
+      #introIntroduction</a>
+      #definitionsDéfinitions & éléments clés</a>
+      #basesBases de données & méthodologie</a>
+      <a hrefCartographies (RGA / IRN)</a>
+      #analyse-nationaleAnalyse — Échelle nationale</a>
+      <analyse-depAnalyse — Échelle départementale</a>
+      #conclusionConclusion</a>
+      #sourcesSources</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Problématique -->
+    <section id="problematique">
+      <h2>Problématique</h2>
+      <p><strong>Comment concilier attractivité immobilière et exposition aux risques naturels pour orienter les décisions d’investissement ?</strong> <!-- PDF p.1 --> </p>
+    </section>
+
+    <!-- Introduction -->
+    <section id="intro">
+      <h2>Introduction — Pourquoi étudier le RGA et l’IRN ?</h2>
+      <div class="panel">
+        <p>Les risques naturels tels que le <strong>retrait‑gonflement des argiles (RGA)</strong> et les <strong>inondations par remontée de nappes (IRN)</strong> constituent un enjeu majeur pour la résilience climatique, le marché immobilier et la gestion des assurances en France. L’étude analyse l’impact de ces aléas sur les transactions immobilières pour identifier les zones à forte exposition, anticiper les tendances du marché et fournir des outils d’aide à la décision pour les investisseurs et les pouvoirs publics. <!-- PDF p.1-2 --> </p>
+      </div>
+    </section>
+
+    <!-- Définitions & éléments clés -->
+    <section id="definitions">
+      <h2>Définitions & éléments clés</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>IRN — Inondation par remontée de nappes</h3>
+          <p>L’IRN correspond à la possibilité que l’eau souterraine atteigne la surface du sol, les fondations ou les sous‑sols des bâtiments lorsque la recharge dépasse la capacité d’évacuation (pluie, infiltration, saturation des sols). Les sols <em>peu perméables</em> (ex. argileux) sont particulièrement exposés. <!-- PDF p.2 --> </p>
+          <figure>
+            <img src="img_irn_schema.png" alt="Schéma IRN (remontée de nappe vers surfacetre image).</figcaption>
+          </figure>
+        </div>
+
+        <div class="card">
+          <h3>RGA — Retrait‑gonflement des argiles</h3>
+          <p>Le RGA survient lorsque la teneur en eau des sols argileux varie : retrait en période sèche, gonflement après fortes pluies. Ces variations déforment progressivement le sol, causant des désordres (fissures) surtout sur les maisons individuelles aux fondations superficielles. <!-- PDF p.3 --> </p>
+          <details>
+            <summary>Éléments clés récents</summary>
+            <ul>
+              <li>Depuis 2015 : sécheresses plus intenses et longues ; part des sécheresses dans les CatNat indemnisées passée de 37% à 60% (2016‑2021). <!-- PDF p.3 --></li>
+              <li>Arrêté du 23/07/2024 : 1654 communes reconnues en RGA (contre 44 au 26/07/2016 ; 42 en Seine‑et‑Marne, 2 dans l’Yonne). <!-- PDF p.3 --></li>
+            </ul>
+          </details>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>À intégrer :</strong> Carte interactive des <em>communes concernées</em> et <em>répartition des départements</em>.
+        <div class="iframe-wrap" style="margin-top:.6rem">
+          <!-- Remplace le src par ton fichier -->
+          <iframe title="Carte interactive — Communes concernées (exemple)"
+                  src="carte_interactive_communes_concer& méthodologie -->
+    <section id="bases">
+      <h2>Bases de données & méthodologie</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>DVF (Données de valeurs foncières)</h3>
+          <p>Transactions 2020–2024 : valeurs, types, localisation, dates ; nécessite nettoyage et contrôles (valeurs manquantes, cohérence). Limitation : base incomplète. <!-- PDF p.6 --> </p>
+          <p class="muted">Lien : <a href="https://www.data.gouv.fr/datasets-de-valeurs-foncieres-geolocaliseesDVF — data.gouv.fr</a></p>
+        </div>
+        <div class="card">
+          <h3>RGA (Géorisques)</h3>
+          <p>Exposition <strong>faible / moyenne / forte</strong>. Analyse nationale (France métropolitaine) puis départementale. Données SIG (shapefile), 122 222 obs., 4 colonnes. Contrôles qualité (doublons, NA). <!-- PDF p.6-7 --> </p>
+          <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/retrait-gonflement-des-argiles"isques</a></p>
+        </div>
+        <div class="card">
+          <h3>IRN (Géorisques)</h3>
+          <p>Zones à risque d’IRN (métropole + Corse), téléchargement par département ; fournis : shapefile, symbologies, rapport BRGM. Jointure préalable de 96 shapefiles. <!-- PDF p.7 --> </p>
+          <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/inondations-par-remontee-de-nappes" target="_blank"       </div>
+        <div class="card">
+          <h3>Jointures & enrichissements</h3>
+          <ul>
+            <li>Jointure spatiale DVF ⟵ RGA (gauche)</li>
+            <li>Jointure spatiale ⟵ IRN (gauche) sur le résultat</li>
+            <li>Ajout des arrêtés CatNat (CCR)</li>
+          </ul>
+          <p class="muted">Script : <code>code_jointure_shapefile_inondation</code> <!-- PDF p.7 --></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cartographies RGA / IRN -->
+    <section id="cartos">
+      <h2>Cartographies & zooms</h2>
+
+      <h3>RGA — Cartes</h3>
+      <div class="panel">
+        <p><strong>2024 :</strong> 81% des départements touchés par le RGA. Départements très concernés : Moselle (57), Dordogne (24), Jura (39), Lot‑et‑Garonne (47), Meurthe‑et‑Moselle (54), Gironde (33), Indre‑et‑Loire (37), Loiret (45), Nord (59), Yvelines (78), Charente (16), Seine‑et‑Marne (77), Loir‑et‑Cher (41), Sarthe (72), Charente‑Maritime (17). <!-- PDF p.4 --></p>
+        <figure>
+          <img src="carte_rga_depts.png"<figcaption>Cartographie RGA par département (remplacer par l’image définitive).</figcaption>
+        </figure>
+        <figure>
+          <img src="carte_rga_communes.png" alt="Cartographie RGA par commune"mmune — Échelle inversée (zones à risque en blanc). <!-- PDF p.4 --></figcaption>
+        </figure>
+      </div>
+
+      <h3>Zoom Yonne (89)</h3>
+      <div class="panel">
+        <p>Comparaison arrêts 2016 vs 2024 : forte hausse du nombre de communes touchées. <!-- PDF p.5 --></p>
+        <figure>
+          <img src="zoom_yonne.png" alt="Comparaison communes RGA Yonne 2016 vs 2022016 vs 2024.</figcaption>
+        </figure>
+      </div>
+
+      <h3>IRN — Cartes</h3>
+      <div class="panel">
+        <p>IRN reste minoritaire : entre 2012 et 2018, ~1,6% des dossiers CatNat ; en 2024, seule la commune de <strong>Baziège (31)</strong> est concernée par un arrêté IRN (comparaison 2016 vs 2024). <!-- PDF p.6 & p.8 --> </p>
+        <div class="iframe-wrap">
+          <iframe title="IRN — Cartes (départements & communes)" src="carte_interactive_dvf_inon_cou"margin-top:.4rem" class="muted">Remplacer l’iframe si vous avez des versions distinctes “départements” / “communes”.</figcaption>
+      </div>
+    </section>
+
+    <!-- Analyse nationale -->
+    <section id="analyse-nationale">
+      <h2>Analyse — Où investir ? (Échelle nationale)</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>RGA — Répartition</h3>
+          <p>18,6% du territoire en <strong>exposition forte</strong>, 48,6% <strong>moyenne</strong>, 32,7% <strong>faible</strong>. Sud‑Ouest parmi les zones les plus touchées. Répartition des mutations cohérente avec ces niveaux. <!-- PDF p.9 --> </p>
+          <p class="kpi"><span class="tag">Maisons exposées (2024)</span> 66% (dont 12% fortement) <!-- PDF p.10 --></p>
+        </div>
+        <div class="card">
+          <h3>IRN — Répartition</h3>
+          <p>19,5% du territoire en <strong>exposition forte</strong>, 34,5% <strong>moyenne</strong>, 45,9% <strong>faible</strong>. Zones touchées : Sud‑Ouest & Nord‑Ouest. <!-- PDF p.9 --> </p>
+          <p class="kpi"><span class="tag">Habitations exposées (2024)</span> 71% (31% fortement) <!-- PDF p.9 --></p>
+        </div>
+      </div>
+
+      <figure class="panel">
+        <img src="heatmap_correlation.png" alt="Matrice de corrélation — Valeur foneur foncière ; corrélation RGA–IRN ~ 0,04 (quasi nulle). <!-- PDF p.11 --></figcaption>
+      </figure>
+
+      <div class="panel">
+        <h3>Scoring combiné</h3>
+        <p>Un indice global intègre les deux risques : <code>score_risques = score_rga + score_inon</code>, avec une échelle de <strong>2 à 6</strong>. <!-- PDF p.10-11 --> </p>
+
+        <div class="iframe-wrap" style="margin-top:.6rem">
+          <!-- Carte combinée RGA+IRN par département -->
+          <iframe title="Carte combinée des risques (RGA + IRN) — Départements"
+                  src="carte_interactive_dvfp:1rem">
+          <div class="card">
+            <h4 class="good">Départements intéressants</h4>
+            <ul>
+              <li>Nord‑Ouest : 22, 50, 44</li>
+              <li>Centre‑Sud : 87, 19, 15, 12, 48</li>
+              <li>Sud‑Est : 73, 05</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4 class="bad">Départements à fuir</h4>
+            <ul>
+              <li>Sud‑Ouest : 33, 17, 79, 24, 47</li>
+              <li>Nord / Centre : 59, 62</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Prix au m² & volume de ventes (Maisons, 2024)</h3>
+        <p>Filtrage : <em>natures = ventes</em>, <em>type = maisons</em>, <em>surface réelle</em> pour le prix €/m². Classement par un score = <code>volume_mutations / prix_moyen</code>. <!-- PDF p.12 --> </p>
+        <div class="iframe-wrap">
+          <iframe title="Prix au m² & volume (Maisons, 2024)" src="carte_prix_m2_volume_maisons_2024_donnees" style="margin-top:1rem">
+          <div class="iframe-wrap">
+            <iframe title="Classement investissement — sélection" src="         </div>
+          <div class="iframe-wrap">
+            <iframe title="Évolution prix au m² — départements (5 ans)" src="evolution_pr
+        <div class="iframe-wrap" style="margin-top:1rem">
+          <iframe title="Carte — Départements sélectionnés, RGA + IRN" src="carte_interactive_dvf_inons="panel">Choix équipe ENSAR (profil <em>risquophobe</em>) : <strong>Côtes‑d’Armor</strong> (score global 3,60), prix moyen ~1 800 €/m², cadre naturel attractif ; second choix : <strong>Loire‑Atlantique</strong> (proximité Niort et marché assurance). <!-- PDF p.12-13 --></p>
+      </div>
+    </section>
+
+    <!-- Analyse départementale -->
+    <section id="analyse-dep">
+      <h2>Analyse — Échelle départementale</h2>
+      <p>Département retenu : <strong>Côtes‑d’Armor (22)</strong>. Ciblage des communes moins exposées (score combiné = 2), puis comparaison de l’évolution des prix sur 5 ans et vérification finale du niveau de risque. <!-- PDF p.13 --> </p>
+
+      <div class="grid-2">
+        <div>
+          <h3>Carte des risques (communes)</h3>
+          <div class="iframe-wrap">
+            <iframe title="Communes — Score risques (Rl</iframe>
+          </div>
+        </div>
+        <div>
+          <h3>Évolution des prix (communes 22)</h3>
+          <div class="iframe-wrap">
+            <iframe title="Évolution prix au m² — communes (22)" src="evolution_prix_m2_communes_22_select_div>
+
+      <div class="iframe-wrap" style="margin-top:1rem">
+        <iframe title="Vérification risques — communes sélectionnées" src="carte_interactive_dvf_inon_rgal" style="margin-top:1rem">
+        <h3>Bilan — Quelle commune ?</h3>
+        <p>Recommandation cible : <strong>commune X</strong> (Côtes‑d’Armor). Motifs : coût d’investissement attractif, label “station verte”, bonne desserte. <!-- PDF p.13 --></p>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section id="conclusion">
+      <h2>Conclusion</h2>
+      <p>Les risques naturels (RGA, IRN) influencent la pérennité des investissements immobiliers. L’intégration DVF + Géorisques + CatNat permet de cartographier l’exposition, d’étudier la corrélation valeur‑risques et de proposer un scoring combiné qui éclaire la décision. Des territoires tels que les <strong>Côtes‑d’Armor</strong> ou la <strong>Loire‑Atlantique</strong> offrent un bon compromis entre attractivité et faible vulnérabilité. Limites : urbanisation future, fiscalité locale, politiques d’adaptation, complétude DVF ; perspectives : intégrer socio‑économie et projections climatiques. <!-- PDF p.14 --> </p>
+    </section>
+
+    <!-- Sources -->
+    <section id="sources">
+      <h2>Sources & liens utiles</h2>
+      <ul class="source-list">
+        <li><a href="https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-rturels/23-retrait-gonflement-des-argilesChiffres clés — RGA (MTE)</a></li>
+        <li><a href="https://www.georisques.gouv.fr/acceder-la-carteive-aux-bases-de-donnees-et-lapiGéorisques — Carte & API</a></li>
+        <li><a href="https://www.georisques.gouv.fr/consulter-les-dossiers-thematiques/retrait-gonflement-des-argiles" target="_blank"</li>
+        <li><a href="https://files.georisques.fr/onrn/202A_f.pdfONRN 2024 — RGA (PDF)</a></li>
+        <li><a href="https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/" target="_a></li>
+        <li><atps://www.eaufrance.fr/Eaufrance</a></li>
+        <li><a href="https://www.ign.fr/lidar-hionsIGN — LiDAR HD & inondations</a></li>
+        <li><a href="https://www.vigicrues.gouv.fr/" target="_blank" rel="noopenerclass="muted">Cette page reprend le contenu structuré du livrable PDF et intègre des emplacements pour les cartes et tableaux interactifs. <!-- PDF global --></p>
+    </section>
+
+    <footer>
+      <p>© 2025 — Étude ENSAR / Direction Tarification — Mise en page HTML.</p>
+    </footer>
+  </main>
+</body>
+</html>
