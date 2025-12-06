@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Challenge Data Visualisation en Actuariat 2025 — Risques naturels & immobilier</title>
+  <style>
+    :root{
+      --bg:#0f1b2a; --fg:#f7f7fb; --accent:#2ea5ff; --muted:#9aa7b2; --card:#ffffff; --ink:#1b2b3a;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    header{padding:2rem 1rem;border-bottom:1px solid #1e2f43;background:linear-gradient(180deg,#13243a, #0f1b2a)}
+    .wrap{max-width:1100px;margin:0 auto}
+    h1{font-size:2.2rem;margin:0 0 .5rem 0}
+    h2{color:var(--fg)}
+    p.lead{color:var(--muted);font-size:1.05rem}
+    nav{position:sticky;top:0;background:#122238;border-bottom:1px solid #1e2f43;z-index:10}
+    nav .wrap{display:flex;gap:.75rem;flex-wrap:wrap}
+    nav a{color:var(--fg);text-decoration:none;padding:.75rem 1rem;border-radius:.4rem}
+    nav a:hover{background:#18314f}
+    section{padding:2rem 1rem}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .card{grid-column:span 12;background:var(--card);color:var(--ink);border-radius:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:1rem}
+    .card h3{margin:.25rem 0 .5rem 0}
+    .two{grid-column:span 6}
+    .three{grid-column:span 4}
+    .notice{background:#11263b;color:var(--fg);border:1px solid #1e3a5c;border-radius:.6rem;padding:1rem}
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono","Courier New", monospace;background:#0b1a2a;color:#cbe0ff;border:1px solid #193251;padding:.3rem .4rem;border-radius:.3rem}
+    footer{padding:2rem 1rem;border-top:1px solid #1e2f43;color:var(--muted)}
+    .source{color:#5d7286;font-size:.95rem}
+    .placeholder{display:grid;place-items:center;height:340px;border:2px dashed #b9c7d6;border-radius:.6rem;color:#5b6b7c;background:#f6f8fa}
+    .tag{display:inline-block;background:#e9f4ff;color:#184a78;padding:.25rem .5rem;border-radius:.4rem;margin-right:.35rem;border:1px solid #cfe6ff}
+    .logo{font-weight:700;letter-spacing:.02em}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="logo">Institut des Actuaires — DataViz 2025</div>
+      <h1>Risque naturel & immobilier : le marché capitalise‑t‑il le RGA et les remontées de nappes&nbsp;?</h1>
+      <p class="lead">Support HTML interactif (squelette) pour la vidéo de 3–6 minutes et le dépôt officiel. Remplacez les cadres ci‑dessous par vos graphiques ou intégrez des figures Plotly/Folium.</p>
+    </div>
+  </header>
+
+  
+  <nav>
+    <div class="wrap">
+      <a href="#probleme">Problématique</a>
+      <a href="#donnees">Données</a>
+      <a href="#resultats">Résultats</a>
+      <a href="#timeline">Après 2022</a>
+      <a href="#sinistres">Carte des sinistres</a>
+      <a href="#reco">Recommandations</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </nav>
+  
+
+  <section id="probleme">
+    <div class="wrap grid">
+      <div class="card">
+        <h3>Accroche</h3>
+        <p>« Acheter au bon prix, oui… mais dans une zone exposée au <strong>retrait‑gonflement des argiles (RGA)</strong> ou
+          aux <strong>inondations par remontée de nappes</strong>, le marché reflète‑t‑il réellement ce risque&nbsp;? »</p>
+        <div class="notice">
+          <p><span class="tag">Objectif</span> Estimer la <strong>décote</strong> (ou l’absence de décote) des prix/m² en fonction des niveaux 
+            d’exposition au RGA et aux remontées de nappes, puis illustrer l’<strong>impact assurantiel</strong> via des scénarios (CatNat).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="donnees">
+    <div class="wrap grid">
+      <div class="card two">
+        <h3>DVF (transactions immobilières, 5 dernières années)</h3>
+        <p>Base officielle en open‑data (MAJ semestrielle). Variables clés : <em>valeur_foncière</em>, <em>type_local</em>, <em>surface</em>, <em>date</em>, <em>géolocalisation</em>. <span class="source">Réf. : data.gouv, MAJ 20/10/2025</span></p>
+        <div class="placeholder">Placez ici la carte des <strong>prix DVF par commune</strong> (choroplèthe).</div>
+      </div>
+      <div class="card two">
+        <h3>Géorisques — RGA & Remontée de nappes</h3>
+        <p>Zonages d’exposition (faible/moyen/fort pour RGA ; zones sensibles pour nappes). Téléchargeables par département / national.</p>
+        <div class="placeholder">Placez ici la <strong>carte d’exposition RGA</strong> ou <strong>zones sensibles nappes</strong>.</div>
+      </div>
+      <div class="card">
+        <h3>Préparation & jointure spatiale</h3>
+        <p>Nettoyage DVF (maisons/appartements, gestion multi‑lots), calcul du <strong>prix/m²</strong>, reprojection en <span class="kbd">EPSG:2154 (Lambert‑93)</span>, <strong>jointure</strong> avec les couches RGA/nappes (commune ou parcelle).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="resultats">
+    <div class="wrap grid">
+      <div class="card two">
+        <h3>Décote observée (modèle hédonique)</h3>
+        <div class="placeholder">Graphique : <strong>prix/m² vs classe RGA</strong> (boxplots) + <em>effets fixes commune</em>.</div>
+      </div>
+      <div class="card two">
+        <h3>Corrélation résiduelle</h3>
+        <div class="placeholder">Nuage de points des <strong>résiduels</strong> du modèle vs indicateurs de risque (<em>ligne de tendance</em>).</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <div class="wrap grid">
+      <div class="card">
+        <h3>Après la sécheresse 2022&nbsp;: dynamiques de marché</h3>
+        <p>Comparer <strong>volume mensuel</strong> et <strong>prix médian</strong> dans les départements à exposition <em>forte</em> vs <em>faible</em> au RGA. Mettre en exergue le <em>marché qui s’ajuste (ou non)</em>.</p>
+        <div class="placeholder">Timeline 2019–2025 avec bande grisée pour 2022.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sinistres">
+    <div class="wrap grid">
+      <div class="card">
+        <h3>Carte des sinistres CatNat liés au RGA (coût cumulé / département)</h3>
+        <p>Visualiser la <strong>charge assurantielle</strong> (CCR/SDES/ADEME) et croiser avec l’exposition et les prix. Cette carte éclaire la <em>priorisation territoriale</em>.</p>
+       
+<iframe src="carte_interactive_arrete_par_departements_2024.html"
+        width="100%"
+        height="600"
+
+    </div>
+  </section>
+
+  <section id="reco">
+    <div class="wrap grid">
+      <div class="card three">
+        <h3>Pour l’assureur</h3>
+        <ul>
+          <li>Intégrer un <strong>coefficient de risque</strong> RGA/nappes dans la tarification de la MRH.</li>
+          <li>Programmes de <strong>prévention ciblée</strong> (communes à forte charge + prix élevés).</li>
+        </ul>
+      </div>
+      <div class="card three">
+        <h3>Pour le marché immobilier</h3>
+        <ul>
+          <li>Améliorer l’<strong>information acheteurs</strong> (états des risques, carto Géorisques).</li>
+          <li>Suivre la <strong>décote</strong> et ses déterminants (aménités, contraintes PPRI/ELAN).</li>
+        </ul>
+      </div>
+      <div class="card three">
+        <h3>Volet réglementaire</h3>
+        <ul>
+          <li><strong>Loi ELAN</strong> : études géotechniques obligatoires en zones RGA moyen/fort.</li>
+          <li>Utiliser les dispositifs d’<strong>aide à la prévention</strong> (expérimentations en cours).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="wrap grid">
+      <div class="card">
+        <h3>Références & liens</h3>
+        <ul class="source">
+          <li>DVF (open‑data, MAJ semestrielle) : https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/</li>
+          <li>Explorateur DVF (Service public) : https://www.economie.gouv.fr/particuliers/…/demande-de-valeurs-foncieres</li>
+          <li>Géorisques — RGA (cartes d’exposition) : https://www.georisques.gouv.fr/retrait-gonflement-des-argiles-projet-2025</li>
+          <li>Géorisques — Inondations par remontée de nappes : https://www.georisques.gouv.fr/donnees/bases-de-donnees/inondations-par-remontee-de-nappes</li>
+          <li>Sinistralité CatNat (CCR/SDES) : https://www.statistiques.developpement-durable.gouv.fr/…/8-sinistralite-liee-aux-catastrophes-naturelles</li>
+          <li>Indemnisations RGA 2022 (ADEME indicateur) : https://batizoom.ademe.fr/indicateurs/indemnisations-par-le-dispositif-cat-nat-liees-aux-dommages-assures-causes-par-le-sinistre-secheresse</li>
+          <li>Loi ELAN (RGA) — information & obligations : https://www.alpes-maritimes.gouv.fr/…/Le-retrait-gonflement-des-argiles</li>
+        </ul>
+        <p class="source">Dernière édition : 29/11/2025</p>
+      </div>
+      <div class="card notice">
+        <h3>Comment remplacer les cadres par vos graphiques ?</h3>
+        <ol>
+          <li>Exportez chaque figure en <strong>PNG/SVG</strong> (ex. Plotly ou Matplotlib), placez‑la dans le même dossier que ce fichier, puis remplacez la <em>div</em> <span class="kbd">.placeholder</span> par une balise <span class="kbd">&lt;img src="figure.png" alt="…" /&gt;</span>.</li>
+          <li>Ou intégrez un graphique <strong>Plotly</strong> en ajoutant le script CDN dans &lt;head&gt; : <span class="kbd">&lt;script src="https://cdn.plot.ly/plotly-2.30.0.min.js"&gt;&lt;/script&gt;</span> puis insérez un &lt;div id="chart1"&gt;&lt;/div&gt; et votre code Plotly.</li>
+          <li>Pour une carte <strong>Folium/Leaflet</strong>, exportez <span class="kbd">map.html</span> et insérez‑la via <span class="kbd">&lt;iframe src="map.html" width="100%" height="420"&gt;&lt;/iframe&gt;</span>.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © Institut des Actuaires — Dataviz 2025 · Template préparé pour la présentation management/non‑spécialistes.
+    </div>
+  </footer>
+</body>
+</html>
