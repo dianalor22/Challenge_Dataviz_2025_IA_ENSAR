@@ -388,10 +388,69 @@
       
    
   </section>
+              </div>
         
          </section>
 
 
+        
+
+<section id="bases">
+    <div class="wrap grid">
+      <div class="card">
+        <h3>Présentation des bases de données </h3>
+
+        
+
+<p> L’étude se base principalement sur les bases de données ci-dessous : </p>
+
+<h4>1. DVF (Données de valeurs foncières)</h4>
+<p>La base DVF issue de la plateforme Datagouv, recense les transactions immobilières en France entre 2020 et 2024. Elle fournit des informations
+  détaillées sur la valeur des biens, leur type, leur localisation et la date de vente, permettant d’analyser l’évolution des valeurs foncières
+  au fil du temps.</p>
+<p>Le fichier est disponible au format CSV et nécessite un traitement préalable des valeurs manquantes et 
+  une vérification de la cohérence des données. Une des limites de la base de données est qu’elle est incomplète.</p>
+<p>Consultable via le lien : <a href="#" title="Demandes de valeurs foncières géolocalisées RGA (Retrait-gonflement des argiles)</p>
+
+<h4>2. RGA (Retrait gonflement des argiles)</h4>                             
+<p>Les données relatives au risque RGA proviennent de la plateforme Géorisques. 
+    Cette base renseigne l’exposition des territoires au risque RGA selon trois niveaux d’aléa : faible, moyen et fort.</p>
+<p>Dans un premier temps, l’analyse est réalisée à l’échelle nationale,
+                               en se concentrant sur la France métropolitaine. Dans un second temps, 
+                               une approche plus fine sera adoptée à l’échelle départementale, en fonction des zones 
+                               identifiées comme étant plus ou moins exposées au risque.</p>
+<p>Le jeu de données se présente sous la forme d’un fichier shapefile comprenant 122 222 observations et 4 colonnes, 
+                               décrivant les délimitations géographiques de chaque département. 
+                               Les cinq fichiers associés (.cpg, .dbf, .prj, .shp et .shx) sont fournis par Géorisques.</p>
+<p>Avant d’engager l’analyse, une vérification préalable a été effectuée afin de garantir la qualité et l’exploitabilité des données, notamment par le contrôle des doublons et des valeurs manquantes, afin d’éviter tout biais dans les résultats.</p>
+<p>Consultable via le lien : <a href="#" title="Retrait-gonf | Géorisques</a></p>
+
+<h4>3. IRN (Inondation par remontée de nappes )</h4>
+<p>Cette base identifie les zones présentant un risque élevé de débordement par remontée de nappe ou d’inondation de sous-sols. 
+  Elle couvre la France métropolitaine et la Corse et est téléchargeable par département.</p>
+<p>Les fichiers comprennent les données SIG (Shapefile), les symbologies compatibles ArcGIS et QGIS, 
+  ainsi que le rapport BRGM détaillant l’élaboration de la carte et ses limites d’utilisation.</p>
+<p>Avant toute analyse, une jointure a été effectuée au préalable entre les 96 fichiers des départements
+  de la France métropolitaine et la Corse entre l’ensemble des Shapefiles.</p>
+<p>Consultable via le lien : #Inondations par remontée de nappes | Géorisques</a></p>
+
+<h4>4. Jointure</h4>
+<p>Deux jointures à gauche ont été réalisées successivement :</p>
+<p>Une première jointure à gauche entre les bases DVF et RGA effectuée via une relation spatiale.</p>
+<p>Une seconde jointure à gauche entre le résultat de cette première étape et la jointure de la base inondation,
+  également réalisée via une relation spatiale également.</p>
+<p>Le script correspondant à la jointure finale est fourni sous le nom de <strong>code_jointure_shapefile_inondation</strong>.</p>
+
+<h4>2.5. Données externes</h4>
+<p>Afin d’enrichir notre base d’informations, nous avons également intégré des données externes pour 
+  approfondir notre analyse de risque, à savoir : les données relatives aux arrêtés CatNat disponibles 
+  sur le site de la CCR (Caisse Centrale de la Réassurance). Toutes les sources utilisées seront renseignées en bas de page.</p>
+
+
+        
+      </div>
+    </div>
+  </section>
 
 
   <section id="analyse-nationale">
