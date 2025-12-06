@@ -1,53 +1,38 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Challenge DataVisualisation 2025_Equipe ENSAR</title>
-  <meta name="description" 
-    content="Étude RGA et IRN : concilier attractivité immobilière et exposition aux risques naturels pour orienter les décisions d’investissement." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Challenge Data Visualisation en Actuariat 2025 — Risques naturels & immobilier</title>
   <style>
     :root{
-      --bg:#0f1220; --panel:#171a2b; --muted:#9aa4bf; --text:#e7ebff;
-      --accent:#5eb1ff; --accent2:#ffd166; --ok:#70e000; --warn:#f8961e; --bad:#ef476f;
-      --border:#2a2f47;
+      --bg:#0f1b2a; --fg:#f7f7fb; --accent:#2ea5ff; --muted:#9aa7b2; --card:#ffffff; --ink:#1b2b3a;
     }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    header{padding:2.4rem 1.2rem 1rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(94,177,255,.08),transparent);}
-    .container{max-width:1050px;margin:0 auto;padding:0 1.2rem;}
-    h1{font-size:1.9rem;margin:0 0 .25rem;line-height:1.2;}
-    h2{margin:2.2rem 0 .8rem;font-size:1.4rem;border-left:4px solid var(--accent);padding-left:.6rem;}
-    h3{margin:1.4rem 0 .6rem;font-size:1.1rem;color:#d8e4ff}
-    p{line-height:1.65;margin:.6rem 0;}
-    .muted{color:var(--muted)}
-    .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:1rem 0;}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:1rem;}
-    .kpi{font-weight:700;color:#fff}
-    .tag{display:inline-block;padding:.18rem .5rem;border:1px solid var(--border);border-radius:999px;margin:.15rem .2rem;background:#14182a}
-    nav.toc{position:sticky;top:0;background:rgba(15,18,32,.8);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);z-index:10}
-    nav.toc .wrap{display:flex;gap:.8rem;overflow:auto;padding:.6rem 1.2rem}
-    nav.toc a{white-space:nowrap;color:var(--muted);text-decoration:none;font-size:.92rem;padding:.35rem .6rem;border-radius:8px;border:1px solid transparent}
-    nav.toc a:hover, nav.toc a:focus{color:#fff;border-color:var(--border);background:#13172a}
-    figure{margin:1rem 0}
-    figure img{max-width:100%;height:auto;border-radius:8px;border:1px solid var(--border)}
-    figcaption{font-size:.9rem;color:var(--muted);margin-top:.25rem}
-    .iframe-wrap{border:1px dashed var(--border);border-radius:10px;overflow:hidden;background:#121528}
-    .iframe-wrap iframe{width:100%;height:520px;border:0;background:#0a0c16}
-    details{border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;background:#14182a;margin:.8rem 0}
-    details[open]{background:#101326}
-    summary{cursor:pointer;font-weight:600}
-    .source-list li{margin:.4rem 0}
-    .callout{border-left:4px solid var(--accent2);padding:.6rem .9rem;background:#14182a;border-radius:8px}
-    .good{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
-    footer{margin:3rem 0 4rem;color:var(--muted)}
-    code{background:#11162a;border:1px solid var(--border);padding:.1rem .35rem;border-radius:6px}
-    .grid-2{display:grid;grid-template-columns:1fr;gap:1rem}
-    @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    header{padding:2rem 1rem;border-bottom:1px solid #1e2f43;background:linear-gradient(180deg,#13243a, #0f1b2a)}
+    .wrap{max-width:1100px;margin:0 auto}
+    h1{font-size:2.2rem;margin:0 0 .5rem 0}
+    h2{color:var(--fg)}
+    p.lead{color:var(--muted);font-size:1.05rem}
+    nav{position:sticky;top:0;background:#122238;border-bottom:1px solid #1e2f43;z-index:10}
+    nav .wrap{display:flex;gap:.75rem;flex-wrap:wrap}
+    nav a{color:var(--fg);text-decoration:none;padding:.75rem 1rem;border-radius:.4rem}
+    nav a:hover{background:#18314f}
+    section{padding:2rem 1rem}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .card{grid-column:span 12;background:var(--card);color:var(--ink);border-radius:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:1rem}
+    .card h3{margin:.25rem 0 .5rem 0}
+    .two{grid-column:span 6}
+    .three{grid-column:span 4}
+    .notice{background:#11263b;color:var(--fg);border:1px solid #1e3a5c;border-radius:.6rem;padding:1rem}
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono","Courier New", monospace;background:#0b1a2a;color:#cbe0ff;border:1px solid #193251;padding:.3rem .4rem;border-radius:.3rem}
+    footer{padding:2rem 1rem;border-top:1px solid #1e2f43;color:var(--muted)}
+    .source{color:#5d7286;font-size:.95rem}
+    .placeholder{display:grid;place-items:center;height:340px;border:2px dashed #b9c7d6;border-radius:.6rem;color:#5b6b7c;background:#f6f8fa}
+    .tag{display:inline-block;background:#e9f4ff;color:#184a78;padding:.25rem .5rem;border-radius:.4rem;margin-right:.35rem;border:1px solid #cfe6ff}
+    .logo{font-weight:700;letter-spacing:.02em}
   </style>
-
-
 
 <head>
     <meta charset="UTF-8">
@@ -110,31 +95,30 @@
 </head>
 
   
-<body>
-    <header class="header">
-        <!-- Logo gauche -->
-      <a>
-               <img src="ensar.jpg"   /> 
-        </a>
 
-        <!-- Texte centré -->
-        <div class="center-text">
-          <h6>
-             Étude des risques <strong>RGA</strong> (Retrait‑Gonflement des Argiles) et <strong>IRN</strong>
-      (Inondation par Remontée de Nappes) et impacts sur l’investissement immobilier —
-            </h6>
-    <p>
-          réalisée par
-      l'équipe ENSAR (Diana Lor RATEFY RAKOTOARISOA et Juliette CÊTRE)
-        </p>
 
-        </div>
+    <header>
+    <div class="wrap">
+      <div class="logo">
+         <img src="ensar.jpg"   />
+      </div>
+        
+        
+        <div class >
+          Challenge DataVisualisation 2025</div>
+      
+      <h1>        Étude des risques <strong>RGA</strong> (Retrait‑Gonflement des Argiles) et <strong>IRN</strong>
+      (Inondation par Remontée de Nappes) et impacts sur l’investissement immobilier — </h1>
+      
+      <p class="lead"> 
+        réalisée parl'équipe ENSAR (Diana Lor RATEFY RAKOTOARISOA et Juliette CÊTRE) </p>
 
-     <a>
-               <img src="logo_ia.jpg"  /> 
-        </a>
-    </header>
-</body>
+            <div class="logo">
+         <img src="logo_ia.jpg"   />
+      </div>
+      
+    </div>
+  </header>
 
 
   
@@ -151,21 +135,25 @@
 
   
 <!-- Sommaire -->
-<nav class="toc">
-  <div class="wrap">
-    #problematiqueProblématique</a>
-    #introductionIntroduction</a>
-    #definitionsDéfinitions et éléments clés</a>
-    #basesBases de données </a>
-    #analyse-nationaleAnalyse : Échelle nationale</a>
-    #analyse-depAnalyse : Échelle départementale</a>
-    #conclusionConclusion</a> 
-    #sourcesSources</a>
-  </div>
-</nav>
+
+    <nav>
+    <div class="wrap">
+      <a href="#problematique">Problématique</a>
+      <a href="#introduction">Introduction</a>
+      <a href="#definition"> Définitions et éléments clés </a>
+      <a href="#analyse-nationale"> Où investir ? ( Echelle nationale )  </a>
+      <a href="#analyse-dep"> Et à l'échelle départementale ? </a>
+      <a href="#conclusion"> Conclusion et limites </a>
+      <a href="#sources">Sources</a>
+    </div>
+  </nav>
+
+  
+
 
 
   <main class="container">
+
 
     <!-- Problématique : -->
     <section id="problematique">
