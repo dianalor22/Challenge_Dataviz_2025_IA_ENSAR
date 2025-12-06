@@ -56,8 +56,9 @@
     <style>
         /* Style général */
         body {
-            margin: 15;
+            margin: 15px;
             font-family: Arial, sans-serif;
+          background: #0f1220;
         }
 
         /* Barre d'en-tête */
@@ -70,9 +71,31 @@
             border-bottom: 1px solid #ddd;
         }
 
+      
+/* Groupes (logo + texte) pour gérer l'espace facilement */
+    brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;            /* <-- espace entre le logo et le texte */
+      text-decoration: none; /* retire soulignement si c'est un <a> */
+      color: inherit;        /* garde la couleur du parent */
+    }
+
+      brand h6 {
+        margin: 0
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color:#0f1220;
+        font-weight:600;
+        line-height : 1.2
+}
+
+
         /* Logos */
         .header img {
             height: 75px; 
+          width:auto;
+          display:block;
         }
 
         /* Lien autour des logos */
@@ -81,11 +104,7 @@
         }
 
       
-h6 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 26px;
-    color:#FFFFFF;
-}
+
 
     </style>
 </head>
