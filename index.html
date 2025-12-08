@@ -567,6 +567,172 @@ Parmi les zones les plus touchées, on retrouve le Sud-Ouest et le Nord-Ouest de
     </div>
   </section>
 
+            
+<!-- Analyse nationale -->
+<section id="analyse-nationale">
+  <h2>Analyse — Où investir ? (Échelle nationale)</h2>
+
+  <!-- Répartition RGA / IRN -->
+  <div class="grid-2">
+    <div class="card">
+      <h3>RGA — Répartition</h3>
+      <p>18,6% du territoire en <strong>exposition forte</strong>, 48,6% <strong>moyenne</strong>, 32,7% <strong>faible</strong>. Le <strong>Sud‑Ouest</strong> est particulièrement touché. <!-- PDF p.13 --> </p>
+      <p class="kpi"><span class="tag">Maisons exposées (2024)</span> 66% (dont 12% fortement) <!-- PDF p.13 --> </p>
+      <div class="iframe-wrap">
+        <iframe src="carte_interactive_dvf_rga_couleur.html" title="Carte des risques RGA par département"></iframe>
+      </div>
+    </div>
+    <div class="card">
+      <h3>IRN — Répartition</h3>
+      <p>19,5% du territoire en <strong>exposition forte</strong>, 34,5% <strong>moyenne</strong>, 45,9% <strong>faible</strong>. Zones les plus touchées : <strong>Sud‑Ouest</strong> & <strong>Nord‑Ouest</strong>. <!-- PDF p.13 --> </p>
+      <p class="kpi"><span class="tag">Habitations exposées (2024)</span> 71% (31% fortement) <!-- PDF p.13 --> </p>
+      <div class="iframe-wrap">
+        <iframe src="carte_interactive_dvf_inon_couleur.html" title="Carte des risques IRN par département"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zones élevées / faibles -->
+  <div class="panel">
+    <h3>Départements — Zones élevées et faibles</h3>
+    <div class="grid-2">
+      <div class="card bad">
+        <h4>Zones élevées</h4>
+        <ul>
+          <li>Sud‑Ouest : Charente‑Maritime, Gironde, Dordogne, Landes</li>
+          <li>Sud‑Est : Bouches‑du‑Rhône</li>
+          <li>Nord‑Ouest : Nord, Seine‑Maritime, Pas‑de‑Calais, Oise, Seine, Marne</li>
+        </ul>
+      </div>
+      <div class="card good">
+        <h4>Zones faibles</h4>
+        <ul>
+          <li>Nord‑Ouest : Finistère / Bretagne</li>
+          <li>Sud‑Est : Hautes‑Alpes, Alpes‑de‑Haute‑Provence</li>
+          <li>Côtes‑d’Armor, Loire‑Atlantique, Maine‑et‑Loire</li>
+          <li>Centre‑Sud</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scoring combiné -->
+  <div class="panel">
+    <h3>Scoring combiné</h3>
+    <p>Indice global : <code>score_risques = score_rga + score_inon</code>, échelle <strong>2 à 6</strong>. Corrélation valeur foncière ~0,2 avec les risques ; corrélation RGA–IRN quasi nulle (~0,04). <!-- PDF p.15 --> </p>
+    <div class="iframe-wrap">
+      <iframe src="carte_interactive_dvf_inon_rga_code_dep.html" title="Carte combinée des risques RGA + IRN"></iframe>
+    </div>
+    <div class="grid-2">
+      <div class="card good">
+        <h4>Départements intéressants</h4>
+        <ul>
+          <li>Nord‑Ouest : 22, 50, 44</li>
+          <li>Centre‑Sud : 87, 19, 15, 12, 48</li>
+          <li>Sud‑Est : 73, 05</li>
+        </ul>
+      </div>
+      <div class="card bad">
+        <h4>Départements à fuir</h4>
+        <ul>
+          <li>Sud‑Ouest : 33, 17, 79, 24, 47</li>
+          <li>Nord‑Centre : 59, 62</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prix au m² & volume -->
+  <div class="panel">
+    <h3>Prix au m² & volume de ventes (Maisons, 2024)</h3>
+    <p>Filtrage : <em>ventes</em>, <em>maisons</em>, <em>surface réelle</em> pour calculer le prix €/m². Score = <code>volume_mutations / prix_moyen</code>. <!-- PDF p.16 --> </p>
+    <div class="iframe-wrap">
+      <iframe src="carte_prix_m2_volume_maisons_2024_donnees.html" title="Carte prix au m² et volume de ventes"></iframe>
+    </div>
+    <div class="iframe-wrap">
+      <iframe src="classement_investissement_selection_donnees.html" title="Classement des départements attractifs"></iframe>
+    </div>
+    <div class="iframe-wrap">
+      <iframe src="evolution_prix_m2_departements.html" title="Évolution des prix au m² — départements"></iframe>
+    </div>
+    <div class="iframe-wrap">
+      <iframe src="carte_interactive_dvf_inon_rga_code_dep_select.html" title="Vérification des risques — départements sélectionnés"></iframe>
+    </div>
+  </div>
+
+  <!-- Bilan -->
+  <div class="panel">
+    <h3>Bilan — Quel département ?</h3>
+    <p>Choix équipe ENSAR (profil <em>risquophobe</em>) : <strong>Côtes‑d’Armor</strong> (score global 3,60, prix moyen ~1 800 €/m², exposition faible aux risques, cadre naturel attractif). Second choix : <strong>Loire‑Atlantique</strong> (proximité Niort, marché assurance, moindre exposition que les Deux‑Sèvres). <!-- PDF p.16-17 --> </p>
+  </div>
+</section>
+
+
+
+<!-- Analyse départementale -->
+<section id="analyse-dep">
+  <h2>Analyse — Échelle départementale</h2>
+  <p>Département retenu : <strong>Côtes‑d’Armor (22)</strong>. L’analyse cible les communes les moins exposées (score combiné = 2), puis compare l’évolution des prix sur 5 ans et vérifie le niveau de risque final. <!-- PDF p.13 --> </p>
+
+  <div class="grid-2">
+    <div>
+      <h3>Carte des risques (communes)</h3>
+      <div class="iframe-wrap">
+        <iframe src="carte_interactive_communes_risques_ter.html" title="Communes — Score risques"></iframe>
+      </div>
+    </div>
+    <div>
+      <h3>Évolution des prix (communes 22)</h3>
+      <div class="iframe-wrap">
+        <iframe src="evolution_prix_m2_communes_22_select_ter.html" title="Évolution prix au m² — communes (22)"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="iframe-wrap" style="margin-top:1rem">
+    <iframe src="carte_interactive_dvf_inon_rga_code_dep_select.html" title="Vérification risques — communes sélectionnées"></iframe>
+  </div>
+
+  <h3>Bilan — Quelle commune ?</h3>
+  <p>Recommandation cible : <strong>Lanvallay</strong> (Côtes‑d’Armor). Motifs : coût d’investissement attractif, commune <em>labellisée station verte</em>, et bonne desserte. <!-- PDF p.13 --> </p>
+</section>
+
+          
+<!-- Conclusion -->
+<section id="conclusion">
+  <h2>Conclusion</h2>
+  <p>Notre étude montre que les risques naturels, en particulier le <strong>retrait-gonflement des argiles (RGA)</strong> et les <strong>inondations par remontée de nappes (IRN)</strong>, influencent directement la pérennité des investissements immobiliers en France. L’intégration des bases <em>DVF</em>, <em>Géorisques</em> et des arrêtés <em>CatNat</em> a permis de cartographier les zones les plus exposées, d’analyser la corrélation entre risques et valeurs foncières, et de construire un scoring combiné pour orienter les décisions.</p>
+  
+  <p>Les résultats révèlent que certaines régions, notamment le <strong>Sud-Ouest</strong>, présentent une forte vulnérabilité. À l’inverse, des départements comme les <strong>Côtes-d’Armor</strong> et la <strong>Loire-Atlantique</strong> offrent un compromis attractif entre prix compétitif et faible exposition aux risques. Nous recommandons en priorité les <strong>Côtes-d’Armor</strong> (~1800 €/m², cadre naturel favorable), et en second choix la <strong>Loire-Atlantique</strong>, notamment pour sa proximité avec Niort, capitale française de l’assurance.</p>
+  
+  <p><em>Limites et perspectives :</em> Cette analyse ne prend pas en compte l’urbanisation future, la fiscalité locale ou les politiques d’adaptation au changement climatique (scénarios GIEC). De plus, la base DVF reste incomplète, ce qui peut biaiser certaines décisions. Une extension pourrait intégrer des données socio-économiques et des projections climatiques pour affiner la stratégie.</p>
+
+  <p><strong>En conclusion, la prise en compte des risques naturels dans l’évaluation immobilière constitue un levier essentiel pour anticiper les impacts du changement climatique et sécuriser les investissements à long terme.</strong><!-- PDF p.14 --></p>
+</section>
+
+
+    <!-- Sources -->
+    <section id="sources">
+      <h2>Sources & liens utiles</h2>
+      <ul class="source-list">
+        <li><a href="https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-rturels/23-retrait-gonflement-des-argilesChiffres clés — RGA (MTE)</a></li>
+        <li><a href="https://www.georisques.gouv.fr/acceder-la-carteive-aux-bases-de-donnees-et-lapiGéorisques — Carte & API</a></li>
+        <li><a href="https://www.georisques.gouv.fr/consulter-les-dossiers-thematiques/retrait-gonflement-des-argiles" target="_blank"</li>
+        <li><a href="https://files.georisques.fr/onrn/202A_f.pdfONRN 2024 — RGA (PDF)</a></li>
+        <li><a href="https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/" target="_a></li>
+        <li><atps://www.eaufrance.fr/Eaufrance</a></li>
+        <li><a href="https://www.ign.fr/lidar-hionsIGN — LiDAR HD & inondations</a></li>
+        <li><a href="https://www.vigicrues.gouv.fr/" target="_blank" rel="noopenerclass="muted">Cette page reprend le contenu structuré du livrable PDF et intègre des emplacements pour les cartes et tableaux interactifs. <!-- PDF global --></p>
+    </section>
+
+    <footer>
+      <p>© 2025 — Étude ENSAR / Direction Tarification — Mise en page HTML.</p>
+    </footer>
+  </main>
+</body>
+</html>
+
+
   <section id="conclusion">
     <div class="wrap grid">
       <div class="card three">
