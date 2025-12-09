@@ -118,37 +118,38 @@
     </div>
   </section>
 
-  <!-- Bases de données -->
-  <section id="bases">
-    <h3>Bases de données & méthodologie</h3>
-    <div class="cards">
-      <div class="card">
-        <h3>DVF (Données de valeurs foncières)</h3>
-        <p>Transactions 2020–2024 : valeurs, types, localisation, dates ; nécessite nettoyage et contrôles (valeurs manquantes, cohérence). Limitation : base incomplète. <!-- PDF p.6 --> </p>
-        <p class="muted">Lien : <a href="https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/">data.gouv.fr</a></p>
+   </section>
+            
+    <section id="bases">
+      <h2>Bases de données & méthodologie</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>DVF (Données de valeurs foncières)</h3>
+          <p>Transactions 2020–2024 : valeurs, types, localisation, dates ; nécessite nettoyage et contrôles (valeurs manquantes, cohérence). Limitation : base incomplète. <!-- PDF p.6 --> </p>
+          <p class="muted">Lien : <a href="https://www.data.gouv.fr/datasets-de-valeurs-foncieres-geolocaliseesDVF — data.gouv.fr</a></p>
+        </div>
+        <div class="card">
+          <h3>RGA (Géorisques)</h3>
+          <p>Exposition <strong>faible / moyenne / forte</strong>. Analyse nationale (France métropolitaine) puis départementale. Données SIG (shapefile), 122 222 obs., 4 colonnes. Contrôles qualité (doublons, NA). <!-- PDF p.6-7 --> </p>
+          <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/retrait-gonflement-des-argiles"isques</a></p>
+        </div>
+        <div class="card">
+          <h3>IRN (Géorisques)</h3>
+          <p>Zones à risque d’IRN (métropole + Corse), téléchargement par département ; fournis : shapefile, symbologies, rapport BRGM. Jointure préalable de 96 shapefiles. <!-- PDF p.7 --> </p>
+          <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/inondations-par-remontee-de-nappes" target="_blank"       </div>
+        <div class="card">
+          <h3>Jointures & enrichissements</h3>
+          <ul>
+            <li>Jointure spatiale DVF ⟵ RGA (gauche)</li>
+            <li>Jointure spatiale ⟵ IRN (gauche) sur le résultat</li>
+            <li>Ajout des arrêtés CatNat (CCR)</li>
+          </ul>
+          <p class="muted">Script : <code>code_jointure_shapefile_inondation</code> <!-- PDF p.7 --></p>
+        </div>
       </div>
-      <div class="card">
-        <h3>RGA (Géorisques)</h3>
-        <p>Exposition <strong>faible / moyenne / forte</strong>. Analyse nationale puis départementale. Données SIG (shapefile), 122 222 obs., 4 colonnes. Contrôles qualité (doublons, NA). <!-- PDF p.6-7 --> </p>
-        <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/retrait-gonflement-des-argiles">Géorisques RGA</a></p>
-      </div>
-      <div class="card">
-        <h3>IRN (Géorisques)</h3>
-        <p>Zones à risque d’IRN (métropole + Corse), téléchargement par département ; fournis : shapefile, symbologies, rapport BRGM. Jointure préalable de 96 shapefiles. <!-- PDF p.7 --> </p>
-        <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/inondations-par-remontee-de-nappes" target="_blank">Géorisques IRN</a></p>
-      </div>
-      <div class="card">
-        <h3>Jointures & enrichissements</h3>
-        <ul>
-          <li>Jointure spatiale DVF ⟵ RGA (gauche)</li>
-          <li>Jointure spatiale ⟵ IRN (gauche) sur le résultat</li>
-          <li>Ajout des arrêtés CatNat (CCR)</li>
-        </ul>
-        <p class="muted">Script : <code>code_jointure_shapefile_inondation</code> <!-- PDF p.7 --></p>
-      </div>
-    </div>
-  </section>
+    </section>
 
+  
   <!-- Analyse nationale / départementale — 2 colonnes -->
   <section id="analyse">
     <div class="wrap two-col">
