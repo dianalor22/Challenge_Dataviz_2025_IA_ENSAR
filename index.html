@@ -92,38 +92,50 @@
     </div>
   </section>
 
-<!-- Définitions et éléments clés : -->
+<!-- Définitions et éléments clé -->
 <section id="definition">
-  <div class="wrap grid">
+  <div class="wrap">
     <div class="card">
-      <h3> Définitions et éléments clés : </h3>
+      <h3>Définitions et éléments clés :</h3>
     </div>
   </div>
 </section>
 
+<!-- CSS local (place-la dans le <head> si tu veux centraliser) -->
 <style>
   .two-col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  /* petites améliorations pour les figures/iframes à l'intérieur des cards */
+  .card figure { margin: 0 0 1rem 0; }
+  .card figure img { max-width: 100%; height: auto; display: block; border-radius: .4rem; }
+  .iframe-wrap { width: 100%; margin-bottom: 1rem; }
+  .callout__row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .75rem; }
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; }
+    .callout__row { grid-template-columns: 1fr; }
   }
 </style>
 
-<!-- ==== SECTION IRN + RGA EN 2 COLONNES ==== -->
-
+<!-- 2 COLONNES : IRN (gauche) | RGA (droite)-->
 <div class="wrap two-col">
 
-  <!-- ===================== COLONNE IRN ===================== -->
-  <div class="card">
-    <h4>IRN — Inondation par remontée de nappes</h4>
+  <!-- 1ère colonne : IRN -->
+  <div class="card" aria-labelledby="irn-title">
+    <h4 id="irn-title">IRN — Inondation par remontée de nappes</h4>
 
-    <p>L’IRN correspond à la possibilité que l’eau souterraine atteigne la surface du sol, les fondations ou les sous-sols
+    <p>
+      L’IRN correspond à la possibilité que l’eau souterraine atteigne la surface du sol, les fondations ou les sous-sols
       des bâtiments lorsque la recharge dépasse la capacité d’évacuation (pluie, infiltration, saturation des sols).
-      Les sols <em>peu perméables</em> (ex. argileux) sont particulièrement exposés. </p>
+      Les sols <em>peu perméables</em> (ex. argileux) sont particulièrement exposés.
+    </p>
 
     <figure>
-      <img src="irn.png" />
+      <img src="irn.png" alt="Schéma : remontée de nappes (IRN)">
       <figcaption>Illustration du mécanisme d’IRN.</figcaption>
     </figure>
 
@@ -131,107 +143,103 @@
       <summary>Éléments clés récents</summary>
       <ul>
         <li>Entre 2012 et 2018, les remontées de nappes ont représenté environ 1,6 % des dossiers de catastrophes naturelles reconnues.</li>
-        <br>
-        <li>En comparant les arrêtés 2016 vs 2024, seule Baziège (31) est concernée par le CatNat IRN.</li>
+        <li>Comparaison arrêtés 28 juin 2016 vs 22 juillet 2024 : Baziège (Haute-Garonne) est identifiée en CatNat IRN.</li>
       </ul>
-
-      <!-- === Début 1er graphe IRN === -->
-      <section class="callout" aria-labelledby="irn-rubrique">
-        <div class="callout__header">
-          <h3 id="irn-rubrique" class="callout__title">
-            Analyse des arrêtés Cat Nat IRN 2016 VS 2024
-          </h3>
-        </div>
-
-        <div id="irn-contenu" class="callout__content">
-          <p><strong>Cartographie des IRN par département :</strong> Seul le département 31 est assujetti.</p>
-        </div>
-
-        <div class="callout__row callout__row--2">
-          <div class="iframe-wrap">
-            <iframe title="IRN — 2016" src="carte_interactive_arrete_inon_par_departements_2016.html" width="100%" height="500"></iframe>
-          </div>
-          <div class="iframe-wrap">
-            <iframe title="IRN — 2024" src="carte_interactive_arrete_inon_par_departements_2024.html" width="100%" height="500"></iframe>
-          </div>
-        </div>
-
-        <div id="irn-contenu" class="callout__content">
-          <p><strong>Cartographie des IRN par commune :</strong> Le risque reste très minoritaire.</p>
-        </div>
-
-        <p class="attention">⚠️ Échelle inversée : les communes à risque sont en blanc.</p>
-
-        <div class="callout__row callout__row--2" style="margin-top:.5rem">
-          <div class="media-box"><img src="irn_2016.png" /></div>
-          <div class="media-box"><img src="irn_2024.png" /></div>
-        </div>
-
-      </section>
-      <!-- === Fin graphe IRN === -->
     </details>
+
+    <section class="callout" aria-labelledby="irn-rubrique">
+      <div class="callout__header">
+        <h5 id="irn-rubrique">Analyse des arrêtés Cat Nat IRN 2016 VS 2024</h5>
+      </div>
+
+      <p><strong>Cartographie des IRN par département :</strong> Seul le département concerné est la Haute-Garonne.</p>
+
+      <div class="callout__row">
+        <div class="iframe-wrap">
+          <iframe title="IRN par département — 2016"
+                  src="carte_interactive_arrete_inon_par_departements_2016.html"
+                  width="100%" height="340" frameborder="0" loading="lazy"></iframe>
+        </div>
+        <div class="iframe-wrap">
+          <iframe title="IRN par département — 2024"
+                  src="carte_interactive_arrete_inon_par_departements_2024.html"
+                  width="100%" height="340" frameborder="0" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <p><strong>Cartographie des IRN par commune :</strong> Le risque reste minoritaire mais à surveiller.</p>
+
+      <div class="callout__row" style="margin-top:.5rem">
+        <figure><img src="irn_2016.png" alt="IRN communes 2016"></figure>
+        <figure><img src="irn_2024.png" alt="IRN communes 2024"></figure>
+      </div>
+
+      <p class="attention">⚠️ Échelle inversée : les communes assujetties au risque sont en blanc.</p>
+    </section>
   </div>
 
-  <!-- ===================== COLONNE RGA ===================== -->
-  <div class="card">
-    <h3>RGA — Retrait-gonflement des argiles</h3>
+  <!-- 2e colonne : RGA -->
+  <div class="card" aria-labelledby="rga-title">
+    <h4 id="rga-title">RGA — Retrait-gonflement des argiles</h4>
 
-    <p>Le RGA survient lorsque la teneur en eau des sols argileux varie : retrait en période sèche, gonflement après fortes pluies.
-      Ces variations déforment progressivement le sol, causant fissures et dommages structurels.</p>
+    <p>
+      Le RGA survient lorsque la teneur en eau des sols argileux varie : retrait en période sèche, gonflement après fortes pluies.
+      Ces variations déforment progressivement le sol, causant des désordres (fissures) surtout sur les maisons individuelles.
+    </p>
 
     <figure>
-      <img src="rga.png" />
+      <img src="rga.png" alt="Schéma : retrait-gonflement des argiles (RGA)">
       <figcaption>Illustration du mécanisme de RGA.</figcaption>
     </figure>
 
     <details>
       <summary>Éléments clés récents</summary>
       <ul>
-        <li>En 2024, 1654 communes reconnues CatNat RGA contre seulement 44 en 2016.</li>
+        <li>Arrêté CCR 23 juillet 2024 : ~1654 communes reconnues CatNat RGA (vs 44 en 2016).</li>
       </ul>
     </details>
 
-    <!-- === Début 1er graphe RGA === -->
     <section class="callout" aria-labelledby="rga-rubrique">
       <div class="callout__header">
-        <h3 id="rga-rubrique" class="callout__title">Analyse Cat Nat RGA 2016 VS 2024</h3>
+        <h5 id="rga-rubrique">Analyse des arrêtés Cat Nat RGA 2016 VS 2024</h5>
       </div>
 
-      <div id="rga-contenu" class="callout__content">
-        <p><strong>Cartographie par département :</strong> En 2024, 81 % des départements sont touchés.</p>
+      <p><strong>Cartographie RGA par département :</strong> En 2024, environ 81 % des départements sont concernés.</p>
+
+      <div class="callout__row">
+        <div class="iframe-wrap">
+          <iframe title="RGA par département — 2016"
+                  src="carte_interactive_arrete_par_departements_2016.html"
+                  width="100%" height="340" frameborder="0" loading="lazy"></iframe>
+        </div>
+        <div class="iframe-wrap">
+          <iframe title="RGA par département — 2024"
+                  src="carte_interactive_arrete_par_departements_2024.html"
+                  width="100%" height="340" frameborder="0" loading="lazy"></iframe>
+        </div>
       </div>
 
-      <div class="callout__row callout__row--2">
-        <div class="iframe-wrap"><iframe src="carte_interactive_arrete_par_departements_2016.html" width="100%" height="500"></iframe></div>
-        <div class="iframe-wrap"><iframe src="carte_interactive_arrete_par_departements_2024.html" width="100%" height="500"></iframe></div>
+      <p><strong>Cartographie RGA par commune :</strong> Multiplication par ~37 du nombre de communes impactées.</p>
+
+      <div class="callout__row" style="margin-top:.5rem">
+        <figure><img src="rga_2016.png" alt="RGA communes 2016"></figure>
+        <figure><img src="rga2024.png" alt="RGA communes 2024"></figure>
       </div>
 
-      <div id="rga-contenu" class="callout__content">
-        <p><strong>Cartographie par commune :</strong> multiplication par 37 des communes touchées.</p>
+      <h5 style="margin-top:1rem">Zoom sur l'Yonne (89)</h5>
+      <p>Le nombre de communes touchées dans le 89 a fortement augmenté.</p>
+
+      <div class="callout__row" style="margin-top:.5rem">
+        <figure><img src="rga2_2016.png" alt="RGA Yonne 2016"></figure>
+        <figure><img src="rga2_2024.png" alt="RGA Yonne 2024"></figure>
       </div>
 
       <p class="attention">⚠️ Échelle inversée : communes à risque en blanc.</p>
-
-      <div class="callout__row callout__row--2" style="margin-top:.5rem">
-        <div class="media-box"><img src="rga_2016.png" /></div>
-        <div class="media-box"><img src="rga2024.png" /></div>
-      </div>
-
-      <div id="rga-contenu" class="callout__content">
-        <p><strong>Zoom sur l’Yonne (89)</strong> : forte augmentation des communes touchées.</p>
-      </div>
-
-      <div class="callout__row callout__row--2">
-        <div class="media-box"><img src="rga2_2016.png" /></div>
-        <div class="media-box"><img src="rga2_2024.png" /></div>
-      </div>
-
     </section>
-    <!-- === Fin graphe RGA === -->
   </div>
 
 </div>
-<!-- ==== FIN DE LA GRILLE 2 COLONNES ==== -->
+<!-- Fin 2e colonne -->
 
 
 
