@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Challenge Dataviz – IA | ENSAR x Institut des Actuaires</title>
+
+  :root{  <!-- Leaflet CSS -->
+      --primary:#0F6CBD;   /* bleu sobre */
+      --accent:#00A19A;    /* vert/bleu pour scores */
+      --bg:#f7f8fb;
+      --text:#0f172a;
+      --muted:#64748b;
+      --card:#ffffff;
+      --border:#e5e7eb;
+      --danger:#e11d48;
+      --warning:#f59e0b;
+      --success:#10b981;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; }
+
+    a{ color:var(--primary); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    /* Header */
+    header{
+      background:linear-gradient(90deg, var(--primary), #123e7a);
+      color:#fff;
+      padding:18px 24px;
+      position:sticky; top:0; z-index:999;
+    }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      max-width:1200px; margin:0 auto;
+    }
+    .brand{
+      display:flex; align-items:center; gap:14px;
+    }
+    .brand img{
+      height:40px; width:auto; object-fit:contain; background:#fff; border-radius:6px; padding:6px;
+      box-shadow:0 2px 6px rgba(0,0,0,.15);
+    }
+    .title h1{
+      margin:0; font-weight:800; letter-spacing:.2px; font-size:1.25rem;
+    }
+    .title p{ margin:2px 0 0; color:#dbeafe; font-weight:400; font-size:.9rem; }
+
+    /* Container & cards */
+    .container{ max-width:1200px; margin:24px auto; padding:0 16px; }
+    .section{ margin:20px 0 28px; }
+    .section h2{
+      margin:0 0 12px;
+      font-size:1.4rem; font-weight:800; color:#0b2b5c;
+    }
+    .section .subtitle{ color:var(--muted); margin:0 0 14px; }
+
+    .grid{ display:grid; grid-template-columns:repeat(12, 1fr); gap:16px; }
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px;
+      box-shadow:0 6px 18px rgba(17,24,39,.08);
+    }
+    .card h3{ margin:0 0 8px; font-size:1.05rem; font-weight:700; }
+    .card p{ margin:6px 0; color:#334155; }
+
+    /* Map containers */
+    #map-national, #map-dept{ width:100%; height:420px; border-radius:10px; overflow:hidden; }
+    .legend{
+      display:flex; gap:8px; align-items:center; margin-top:8px; color:#334155;
+      font-size:.9rem;
+    }
+    .legend .swatch{ width:16px; height:16px; border-radius:3px; display:inline-block; border:1px solid #ddd; }
+
+    /* Table / ranking */
+    table{ width:100%; border-collapse:collapse; }
+    th, td{ text-align:left; padding:10px; border-bottom:1px solid var(--border); }
+    thead th{ font-weight:700; font-size:.92rem; color:#0b2b5c; }
+    tbody tr:hover{ background:#f9fafb; }
+
+    /* Footer */
+    footer{
+      margin-top:36px; padding:18px; text-align:center; color:#6b7280;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .topbar{ flex-direction:column; align-items:flex-start; }
+      .brand img{ height:36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with logos -->
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <img src="logo_ensar.png" altrc="logo_ia.jpg" >
+        <h1>Challenge Datavisualisation en Actuariat – Édition 2025</h1>
+        <p>Équipe ENSAR : Juliette CETRE & Diana-Lor RATEFY RAKOTOARISOA</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Enjeu -->
+    <section class="section">
+      <h2>Enjeu</h2>
+      <div class="card">
+        <p><strong>Allier potentiel immobilier et maîtrise du risque</strong> pour guider la décision d’investissement !</p>
+      </div>
+    </section>
+
+    <!-- Etat des lieux / Méthodologie -->
+    <section class="section">
+      <h2>Méthodologie</h2>
+      <p class="subtitle">1) Scoring combinant risques RGA & IRN · 2) Comparaison du prix au m² · 3) Scoring d’investissement · 4) Évolution du marché immobilier</p>
+      <div class="grid">
+        <div class="card" style="grid-column: span 12;">
+          <h3>Notes</h3>
+          <ul>
+            <li>RGA/IRN : exposition CatNat considérée comme critère clé.</li>
+            <li>Classements et cartes interactives aux échelles nationale et départementale.</li>
+            <li>Évolution du marché : indicateurs prix/m², volume, tendances.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Résultats – échelle nationale -->
+    <section class="section">
+      <h2>Résultats – Échelle nationale</h2>
+      <div class="grid">
+        <!-- Carte interactive : score combiné -->
+        <div class="card" style="grid-column: span 7;">
+          <h3>Carte interactive : score combiné RGA + IRN</h3>
+          <div id="map-national"></div>
+          <div class="legend">
+            <span>Score faible</span><span class="swatch" style="background:#e5f5e0;"></span>
+            <span class="swatch" style="background:#a1d99b;"></span>
+            <span class="swatch" style="background:#31a354;"></span>
+            <span>Score élevé</span><span class="swatch" style="background:#006d2c;"></span>
+          </div>
+          <p style="font-size:.9rem; color:#64748b; margin-top:8px;">
+            Astuce : clique sur une zone pour voir le score et le prix moyen estimé au m².
+          </p>
+        </div>
+
+        <!-- Carte interactive : prix au m² -->
+        <div class="card" style="grid-column: span 5;">
+          <h3>Carte interactive : prix au m²</h3>
+          <canvas id="price-national" height="200"></canvas>
+          <p style="font-size:.9rem; color:#64748b;">Comparaison rapide de quelques zones (exemple). Remplacer par vos données agrégées nationales.</p>
+        </div>
+
+        <!-- Classement grâce au scoring d’investissement -->
+        <div class="card" style="grid-column: span 12;">
+          <h3>Classement (exemple) – Scoring d’investissement</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Rang</th>
+                <th>Département</th>
+                <th>Score d’investissement</th>
+                <th>Score d’exposition</th>
+                <th>Prix moyen au m² (€)</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-body">
+              <!-- rempli par JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choix du département -->
+    <section class="section">
+      <h2>Choix du département</h2>
+      <div class="card">
+        <p><strong>Département des Côtes-d’Armor</strong> — score d’exposition faible ≈ 2 · score d’investissement ≈ 3,60 · prix moyen ≈ 1 800 € / m² · cadre naturel remarquable.</p>
+      </div>
+    </section>
+
+    <!-- Résultats – échelle départementale -->
+    <section class="section">
+      <h2>Résultats – Échelle départementale</h2>
+      <div class="grid">
+        <div class="card" style="grid-column: span 7;">
+          <h3>Carte interactive : score combiné (Côtes-d’Armor)</h3>
+          <div id="map-dept"></div>
+          <p style="font-size:.9rem; color:#64748b; margin-top:8px;">
+            Zoom/drag pour explorer. Données fictives (communes). Remplace par tes GeoJSON.
+          </p>
+        </div>
+
+        <div class="card" style="grid-column: span 5;">
+          <h3>Évolution du marché immobilier (exemple)</h3>
+          <canvas id="market-evolution" height="220"></canvas>
+          <p style="font-size:.9rem; color:#64748b;">Série temporelle de prix/m² (données de démonstration).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choix de la commune -->
+    <section class="section">
+      <h2>Choix de la commune</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Commune de Callac</strong></li>
+          <li>Coût d’investissement attractif</li>
+          <li>Labellisée “Station Verte”</li>
+          <li>Bonne desserte / accessibilité</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="section">
+      <h2>Conclusion</h2>
+      <div class="card">
+        <p><strong>L’exposition CatNat (RGA / IRN)</strong> est un critère clé pour assurer la <strong>durabilité du bâti</strong>.</p>
+        <p>Autres critères : proximité des services et accessibilité · état et performance énergétique du bâti · taxe foncière.</p>
+        <p>Assurance : défi de mutualisation des risques CatNat et de non assurabilité. Axe d’amélioration : stress test avec les scénarios du GIEC.</p>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 – ENSAR & Institut des Actuaires · Dataviz IA
+    </footer>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1j7kN3kY8RT54P4NYcB0R2nW6CqkG6Y3o9Yx3fCU="
+    crossorigin=""
+ r tes vraies données
+       =========================== */
+
+    // GeoJSON national (extrait fictif : polygones simplifiés)
+    // Structure attendue: FeatureCollection de polygones (départements ou régions)
+    const nationalGeoJSON = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type":"Feature",
+          "properties":{"nom":"Côtes-d’Armor (22)","score_expo":2.0,"prix_m2":1800},
+          "geometry":{
+            "type":"Polygon",
+            "coordinates":[[
+              [-3.5,48.0],[-2.0,48.0],[-2.0,49.0],[-3.5,49.0],[-3.5,48.0]
+            ]]
+          }
+        },
+        {
+          "type":"Feature",
+          "properties":{"nom":"Gironde (33)","score_expo":3.6,"prix_m2":3900},
+          "geometry":{
+            "type":"Polygon",
+            "coordinates":[[
+              [-1.5,44.5],[-0.2,44.5],[-0.2,45.5],[-1.5,45.5],[-1.5,44.5]
+            ]]
+          }
+        },
+        {
+          "type":"Feature",
+          "properties":{"nom":"Bouches-du-Rhône (13)","score_expo":4.2,"prix_m2":4200},
+          "geometry":{
+            "type":"Polygon",
+            "coordinates":[[
+              [4.8,43.2],[5.6,43.2],[5.6,43.8],[4.8,43.8],[4.8,43.2]
+            ]]
+          }
+        }
+      ]
+    };
+
+    // GeoJSON départemental (exemple communes fictives)
+    const deptGeoJSON = {
+      "type":"FeatureCollection",
+      "features":[
+        {
+          "type":"Feature",
+          "properties":{"commune":"Callac","score_expo":2.1,"prix_m2":1350},
+          "geometry":{"type":"Polygon","coordinates":[[[-3.4,48.4],[-3.2,48.4],[-3.2,48.6],[-3.4,48.6],[-3.4,48.4]]]}
+        },
+        {
+          "type":"Feature",
+          "properties":{"commune":"Guingamp","score_expo":2.4,"prix_m2":1600},
+          "geometry":{"type":"Polygon","coordinates":[[[-3.3,48.5],[-3.1,48.5],[-3.1,48.7],[-3.3,48.7],[-3.3,48.5]]]}
+        }
+      ]
+    };
+
+    // Données prix national (bar chart)
+    const priceNationalData = [
+      { zone:"Côtes-d’Armor", prix:1800 },
+      { zone:"Gironde", prix:3900 },
+      { zone:"Bouches-du-Rhône", prix:4200 }
+    ];
+
+    // Données évolution marché (line chart)
+    const marketEvolutionSeries = {
+      labels: ["2019","2020","2021","2022","2023","2024"],
+      values: [1450,1500,1550,1650,1750,1800] // prix/m² (exemple Côtes-d’Armor)
+    };
+
+    // Classement (exemple)
+    const ranking = [
+      { rang:1, dep:"Côtes-d’Armor (22)", scoreInvest:3.60, scoreExpo:2.00, prix:1800 },
+      { rang:2, dep:"Gironde (33)",       scoreInvest:3.20, scoreExpo:3.60, prix:3900 },
+      { rang:3, dep:"Bouches-du-Rhône (13)", scoreInvest:2.80, scoreExpo:4.20, prix:4200 },
+    ];
+
+    /* ===========================
+       Helpers de style
+       =========================== */
+    function colorScale(value){
+      // vert clair (faible) -> vert foncé (élevé)
+      return value <= 2.0 ? "#e5f5e0" :
+             value <= 3.0 ? "#a1d99b" :
+             value <= 4.0 ? "#31a354" : "#006d2c";
+    }
+
+    /* ===========================
+       Carte nationale
+       =========================== */
+    const mapNational = L.map('map-national').setView([46.7, 2.6], 5);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; OpenStreetMap contributors'
+    }).addTo(mapNational);
+
+    const nationalLayer = L.geoJSON(nationalGeoJSON, {
+      style: feature => ({
+        color:"#1f2937",
+        weight:1,
+        fillColor: colorScale(feature.properties.score_expo),
+        fillOpacity:.75
+      }),
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.bindPopup(
+          `<strong>${p.nom}</strong><br/>
+           Score d'exposition : <strong>${p.score_expo.toFixed(2)}</strong><br/>
+           Prix moyen au m² : <strong>${p.prix_m2.toLocaleString('fr-FR')} €</strong>`
+        );
+        layer.on('mouseover', () => layer.setStyle({ weight:2 }));
+        layer.on('mouseout', () => layer.setStyle({ weight:1 }));
+      }
+    }).addTo(mapNational);
+
+    mapNational.fitBounds(nationalLayer.getBounds());
+
+    /* ===========================
+       Carte départementale
+       =========================== */
+    const mapDept = L.map('map-dept').setView([48.5, -3.2], 8);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; OpenStreetMap contributors'
+    }).addTo(mapDept);
+
+    const deptLayer = L.geoJSON(deptGeoJSON, {
+      style: feature => ({
+        color:"#1f2937",
+        weight:1,
+        fillColor: colorScale(feature.properties.score_expo),
+        fillOpacity:.75
+      }),
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.bindPopup(
+          `<strong>${p.commune}</strong><br/>
+           Score d'exposition : <strong>${p.score_expo.toFixed(2)}</strong><br/>
+           Prix moyen au m² : <strong>${p.prix_m2.toLocaleString('fr-FR')} €</strong>`
+        );
+      }
+    }).addTo(mapDept);
+
+    mapDept.fitBounds(deptLayer.getBounds());
+
+    /* ===========================
+       Chart: prix national (bar)
+       =========================== */
+    const priceCtx = document.getElementById('price-national').getContext('2d');
+    new Chart(priceCtx, {
+      type:'bar',
+      data:{
+        labels: priceNationalData.map(d => d.zone),
+        datasets:[{
+          label: 'Prix moyen au m² (€)',
+          data: priceNationalData.map(d => d.prix),
+          backgroundColor: '#0F6CBD'
+        }]
+      },
+      options:{
+        plugins:{ legend:{ display:false } },
+        scales:{
+          y:{ ticks:{ callback: v => v.toLocaleString('fr-FR') + ' €' } }
+        }
+      }
+    });
+
+    /* ===========================
+       Chart: évolution marché (line)
+       =========================== */
+    const marketCtx = document.getElementById('market-evolution').getContext('2d');
+    new Chart(marketCtx, {
+      type:'line',
+      data:{
+        labels: marketEvolutionSeries.labels,
+        datasets:[{
+          label:'Prix moyen au m²',
+          data: marketEvolutionSeries.values,
+          borderColor:'#00A19A',
+          backgroundColor:'rgba(0,161,154,0.15)',
+          tension:.25,
+          fill:true
+        }]
+      },
+      options:{
+        plugins:{ legend:{ display:true } },
+        scales:{
+          y:{ ticks:{ callback: v => v.toLocaleString('fr-FR') + ' €' } }
+        }
+      }
+    });
+
+    /* ===========================
+       Classement (table)
+       =========================== */
+    const tbody = document.getElementById('ranking-body');
+    ranking.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${r.rang}</td>
+        <td>${r.dep}</td>
+        <td><strong>${r.scoreInvest.toFixed(2)}</strong></td>
+        <td>${r.scoreExpo.toFixed(2)}</td>
+        <td>${r.prix.toLocaleString('fr-FR')} €</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>
+  https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
+  <!-- Chart.js -->
+  https://cdn.jsdelivr.net/npm/chart.js@4.4.1</script>
+
+  <!-- Inter UI / fallback fonts -->
+  https://fonts.gstatic.com
+  https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap
+
+  <style>
