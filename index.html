@@ -53,15 +53,13 @@
     <div class="wrap">
       <a href="#problematique">Problématique</a>
       <a href="#introduction">Introduction</a>
-      <a href="#definitions">Définitions et éléments clés</a>
+      <a href="#definition">Définitions et éléments clés</a>
       <a href="#bases">Base de données</a>
-      <a href="#nationalAnalyse">Echelle nationale</a>
-      <a href="#depAnalyse">Echelle départementale</a>
+      <a href="#analyse">Analyse</a>
       <a href="#conclusion">Conclusion</a>
       <a href="#sources">Sources</a>
     </div>
   </nav>
-
 
   <!-- Section Problématique -->
   <section id="problematique">
@@ -119,41 +117,41 @@
     </div>
   </section>
 
- </section>
-            
-    <section id="bases">
-      <h2>Bases de données & méthodologie</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>DVF (Données de valeurs foncières)</h3>
-          <p>Transactions 2020–2024 : valeurs, types, localisation, dates ; nécessite nettoyage et contrôles (valeurs manquantes, cohérence). Limitation : base incomplète. <!-- PDF p.6 --> </p>
-          <p class="muted">Lien : <a href="https://www.data.gouv.fr/datasets-de-valeurs-foncieres-geolocaliseesDVF — data.gouv.fr</a></p>
-        </div>
-        <div class="card">
-          <h3>RGA (Géorisques)</h3>
-          <p>Exposition <strong>faible / moyenne / forte</strong>. Analyse nationale (France métropolitaine) puis départementale. Données SIG (shapefile), 122 222 obs., 4 colonnes. Contrôles qualité (doublons, NA). <!-- PDF p.6-7 --> </p>
-          <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/retrait-gonflement-des-argiles"isques</a></p>
-        </div>
-        <div class="card">
-          <h3>IRN (Géorisques)</h3>
-          <p>Zones à risque d’IRN (métropole + Corse), téléchargement par département ; fournis : shapefile, symbologies, rapport BRGM. Jointure préalable de 96 shapefiles. <!-- PDF p.7 --> </p>
-          <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/inondations-par-remontee-de-nappes" target="_blank"       </div>
-        <div class="card">
-          <h3>Jointures & enrichissements</h3>
-          <ul>
-            <li>Jointure spatiale DVF ⟵ RGA (gauche)</li>
-            <li>Jointure spatiale ⟵ IRN (gauche) sur le résultat</li>
-            <li>Ajout des arrêtés CatNat (CCR)</li>
-          </ul>
-          <p class="muted">Script : <code>code_jointure_shapefile_inondation</code> <!-- PDF p.7 --></p>
-        </div>
+  <!-- Bases de données -->
+  <section id="bases">
+    <h2>Bases de données & méthodologie</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>DVF (Données de valeurs foncières)</h3>
+        <p>Transactions 2020–2024 : valeurs, types, localisation, dates ; nécessite nettoyage et contrôles (valeurs manquantes, cohérence). Limitation : base incomplète. <!-- PDF p.6 --> </p>
+        <p class="muted">Lien : <a href="https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/">data.gouv.fr</a></p>
       </div>
-    </section>
-  
+      <div class="card">
+        <h3>RGA (Géorisques)</h3>
+        <p>Exposition <strong>faible / moyenne / forte</strong>. Analyse nationale puis départementale. Données SIG (shapefile), 122 222 obs., 4 colonnes. Contrôles qualité (doublons, NA). <!-- PDF p.6-7 --> </p>
+        <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/retrait-gonflement-des-argiles">Géorisques RGA</a></p>
+      </div>
+      <div class="card">
+        <h3>IRN (Géorisques)</h3>
+        <p>Zones à risque d’IRN (métropole + Corse), téléchargement par département ; fournis : shapefile, symbologies, rapport BRGM. Jointure préalable de 96 shapefiles. <!-- PDF p.7 --> </p>
+        <p class="muted">Lien : <a href="https://www.georisques.gouv.fr/donnees/bases-de-donnees/inondations-par-remontee-de-nappes" target="_blank">Géorisques IRN</a></p>
+      </div>
+      <div class="card">
+        <h3>Jointures & enrichissements</h3>
+        <ul>
+          <li>Jointure spatiale DVF ⟵ RGA (gauche)</li>
+          <li>Jointure spatiale ⟵ IRN (gauche) sur le résultat</li>
+          <li>Ajout des arrêtés CatNat (CCR)</li>
+        </ul>
+        <p class="muted">Script : <code>code_jointure_shapefile_inondation</code> <!-- PDF p.7 --></p>
+      </div>
+    </div>
+  </section>
+
   <!-- Analyse nationale / départementale — 2 colonnes -->
   <section id="analyse">
     <div class="wrap two-col">
-      <!-- Analyse nationale -->
+      <!-- Colonne Analyse nationale -->
       <div class="card equal-height">
         <h4>Analyse nationale</h4>
         <p>Exposition IRN : 18,6% fort, 48,6% moyen, 32,7% faible. Zones Sud-Ouest.</p>
@@ -165,7 +163,7 @@
         </div>
       </div>
 
-      <!-- Analyse départementale -->
+      <!-- Colonne Analyse départementale -->
       <div class="card equal-height">
         <h4>Analyse départementale</h4>
         <div class="iframe-wrap">
@@ -178,38 +176,35 @@
     </div>
   </section>
 
-  <section>
   <!-- Conclusion -->
   <section id="conclusion">
     <div class="wrap grid">
       <div class="card">
-  <h2>Conclusion</h2>
-  <p>Notre étude montre que les risques naturels, en particulier le <strong>retrait-gonflement des argiles (RGA)</strong> et les <strong>inondations par remontée de nappes (IRN)</strong>, influencent directement la pérennité des investissements immobiliers en France. L’intégration des bases <em>DVF</em>, <em>Géorisques</em> et des arrêtés <em>CatNat</em> a permis de cartographier les zones les plus exposées, d’analyser la corrélation entre risques et valeurs foncières, et de construire un scoring combiné pour orienter les décisions.</p>
-  
-  <p>Les résultats révèlent que certaines régions, notamment le <strong>Sud-Ouest</strong>, présentent une forte vulnérabilité. À l’inverse, des départements comme les <strong>Côtes-d’Armor</strong> et la <strong>Loire-Atlantique</strong> offrent un compromis attractif entre prix compétitif et faible exposition aux risques. Nous recommandons en priorité les <strong>Côtes-d’Armor</strong> (~1800 €/m², cadre naturel favorable), et en second choix la <strong>Loire-Atlantique</strong>, notamment pour sa proximité avec Niort, capitale française de l’assurance.</p>
-  
-  <p><em>Limites et perspectives :</em> Cette analyse ne prend pas en compte l’urbanisation future, la fiscalité locale ou les politiques d’adaptation au changement climatique (scénarios GIEC). De plus, la base DVF reste incomplète, ce qui peut biaiser certaines décisions. Une extension pourrait intégrer des données socio-économiques et des projections climatiques pour affiner la stratégie.</p>
+        <h2>Conclusion</h2>
+        <p>Notre étude montre que les risques naturels, en particulier le <strong>retrait-gonflement des argiles (RGA)</strong> et les <strong>inondations par remontée de nappes (IRN)</strong>, influencent directement la pérennité des investissements immobiliers en France. L’intégration des bases <em>DVF</em>, <em>Géorisques</em> et des arrêtés <em>CatNat</em> a permis de cartographier les zones les plus exposées, d’analyser la corrélation entre risques et valeurs foncières, et de construire un scoring combiné pour orienter les décisions.</p>
+        <p>Les résultats révèlent que certaines régions, notamment le <strong>Sud-Ouest</strong>, présentent une forte vulnérabilité. À l’inverse, des départements comme les <strong>Côtes-d’Armor</strong> et la <strong>Loire-Atlantique</strong> offrent un compromis attractif entre prix compétitif et faible exposition aux risques. Nous recommandons en priorité les <strong>Côtes-d’Armor</strong> (~1800 €/m², cadre naturel favorable), et en second choix la <strong>Loire-Atlantique</strong>, notamment pour sa proximité avec Niort, capitale française de l’assurance.</p>
+        <p><em>Limites et perspectives :</em> Cette analyse ne prend pas en compte l’urbanisation future, la fiscalité locale ou les politiques d’adaptation au changement climatique (scénarios GIEC). De plus, la base DVF reste incomplète, ce qui peut biaiser certaines décisions. Une extension pourrait intégrer des données socio-économiques et des projections climatiques pour affiner la stratégie.</p>
+        <p><strong>En conclusion, la prise en compte des risques naturels dans l’évaluation immobilière constitue un levier essentiel pour anticiper les impacts du changement climatique et sécuriser les investissements à long terme.</strong><!-- PDF p.14 --></p>
+      </div>
+    </div>
+  </section>
 
-  <p><strong>En conclusion, la prise en compte des risques naturels dans l’évaluation immobilière constitue un levier essentiel pour anticiper les impacts du changement climatique et sécuriser les investissements à long terme.</strong><!-- PDF p.14 --></p>
-</section>
+  <!-- Sources -->
+  <section id="sources">
+    <h2>Sources & liens utiles</h2>
+    <ul class="source-list">
+      <li><a href="https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-rturels/23-retrait-gonflement-des-argiles">Chiffres clés — RGA (MTE)</a></li>
+      <li><a href="https://www.georisques.gouv.fr/acceder-la-carteive-aux-bases-de-donnees-et-lapi">Géorisques — Carte & API</a></li>
+      <li><a href="https://www.georisques.gouv.fr/consulter-les-dossiers-thematiques/retrait-gonflement-des-argiles" target="_blank">RGA — dossiers thématiques</a></li>
+      <li><a href="https://files.georisques.fr/onrn/202A_f.pdf">ONRN 2024 — RGA (PDF)</a></li>
+      <li><a href="https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/">DVF — data.gouv.fr</a></li>
+      <li><a href="https://www.eaufrance.fr/">Eaufrance</a></li>
+      <li><a href="https://www.ign.fr/lidar-hd">IGN — LiDAR HD & inondations</a></li>
+      <li><a href="https://www.vigicrues.gouv.fr/" target="_blank">Vigicrues</a></li>
+    </ul>
+  </section>
 
-
-  <section>
-    <!-- Sources -->
-    <section id="sources">
-      <h2>Sources & liens utiles</h2>
-      <ul class="source-list">
-        <li><a href="https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-rturels/23-retrait-gonflement-des-argilesChiffres clés — RGA (MTE)</a></li>
-        <li><a href="https://www.georisques.gouv.fr/acceder-la-carteive-aux-bases-de-donnees-et-lapiGéorisques — Carte & API</a></li>
-        <li><a href="https://www.georisques.gouv.fr/consulter-les-dossiers-thematiques/retrait-gonflement-des-argiles" target="_blank"</li>
-        <li><a href="https://files.georisques.fr/onrn/202A_f.pdfONRN 2024 — RGA (PDF)</a></li>
-        <li><a href="https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/" target="_a></li>
-        <li><atps://www.eaufrance.fr/Eaufrance</a></li>
-        <li><a href="https://www.ign.fr/lidar-hionsIGN — LiDAR HD & inondations</a></li>
-        <li><a href="https://www.vigicrues.gouv.fr/" target="_blank" rel="noopenerclass="muted">Cette page reprend le contenu structuré du livrable PDF et intègre des emplacements pour les cartes et tableaux interactifs. <!-- PDF global --></p>
-    </section>
-
-   <footer>
+  <footer>
     <div class="wrap">
       © Institut des Actuaires — Dataviz 2025
     </div>
