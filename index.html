@@ -21,10 +21,8 @@
     nav a:hover{background:#18314f}
     section{padding:2rem 1rem}
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-    .card{grid-column:span 12;background:var(--card);color:var(--ink);border-radius:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:1rem}
+    .card{grid-column:span 12;background:var(--card);color:var(--ink);border-radius:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:1rem; display:flex; flex-direction:column;}
     .card h3, .card h4, .card h5{margin:.25rem 0 .5rem 0}
-    .two{grid-column:span 6}
-    .three{grid-column:span 4}
     .notice{background:#11263b;color:var(--fg);border:1px solid #1e3a5c;border-radius:.6rem;padding:1rem}
     .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono","Courier New", monospace;background:#0b1a2a;color:#cbe0ff;border:1px solid #193251;padding:.3rem .4rem;border-radius:.3rem}
     footer{padding:2rem 1rem;border-top:1px solid #1e2f43;color:var(--muted)}
@@ -33,11 +31,12 @@
     .tag{display:inline-block;background:#e9f4ff;color:#184a78;padding:.25rem .5rem;border-radius:.4rem;margin-right:.35rem;border:1px solid #cfe6ff}
     .logo{font-weight:700;letter-spacing:.02em}
     /* === Styles pour colonnes et cartes === */
-    .two-col {display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:1.5rem;}
+    .two-col {display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:1.5rem; align-items:start;}
     .callout__row {display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem;}
     .card figure {margin:0 0 1rem 0;}
     .card figure img {max-width:100%; height:auto; display:block; border-radius:.4rem;}
     .iframe-wrap {width:100%; margin-bottom:1rem;}
+    .equal-height {display:flex; flex-direction: column; height: 100%;}
     @media (max-width:900px) {.two-col,.callout__row,.grid-2{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -45,7 +44,7 @@
   <header>
     <div class="wrap">
       <div class="logo">Challenge DataVisualisation 2025</div>
-      <h1>Étude des risques <strong>RGA</strong> (Retrait‑Gonflement des Argiles) et <strong>IRN</strong> (Inondation par Remontée de Nappes) et impacts sur l’investissement immobilier.</h1>
+      <h1>Étude des risques <strong>RGA</strong> et <strong>IRN</strong> et impacts sur l’investissement immobilier.</h1>
       <p class="lead">réalisée par l'équipe ENSAR : Diana Lor RATEFY RAKOTOARISOA et Juliette CÊTRE.</p>
     </div>
   </header>
@@ -54,142 +53,76 @@
     <div class="wrap">
       <a href="#problematique">Problématique</a>
       <a href="#introduction">Introduction</a>
-      <a href="#definition"> Etats des lieux </a>
-      <a href="#base">Bases </a>
-      <a href="#analyse-nationale"> Où investir ? </a>
-      <a href="#analyse-dep"> Et à l'échelle départementale ? </a>
-      <a href="#conclusion"> Conclusion et limites </a>
+      <a href="#definition">Éléments clés</a>
+      <a href="#analyse">Analyse</a>
+      <a href="#conclusion">Conclusion</a>
       <a href="#sources">Sources</a>
     </div>
   </nav>
 
-  <!-- === Section Problématique === -->
+  <!-- Section Problématique -->
   <section id="problematique">
     <div class="wrap grid">
       <div class="card">
         <h3>Accroche :</h3>
-        <p>« Acheter au bon prix, oui… mais dans une zone exposée au <strong>retrait‑gonflement des argiles (RGA)</strong> ou aux <strong>inondations par remontée de nappes</strong>, le marché reflète‑t‑il réellement ce risque ? »</p>
-        <div class="notice">
-          <p><span class="tag">Problématique </span> Comment concilier attractivité immobilière et exposition aux risques <strong>RGA</strong> et <strong>IRN</strong> pour orienter les décisions d’investissement ?</p>
-        </div>
+        <p>« Acheter au bon prix, oui… mais dans une zone exposée au <strong>RGA</strong> ou aux <strong>IRN</strong>, le marché reflète-t-il réellement ce risque ? »</p>
       </div>
     </div>
   </section>
 
-  <!-- === Section Introduction === -->
+  <!-- Section Introduction -->
   <section id="introduction">
     <div class="wrap grid">
       <div class="card">
         <h3>Pourquoi étudier le RGA et l’IRN ?</h3>
-        <div class="panel">
-          <p>Les risques naturels tels que le <strong>retrait‑gonflement des argiles (RGA)</strong> et les <strong>inondations par remontée de nappes (IRN)</strong> constituent un enjeu majeur pour la résilience climatique, le marché immobilier et la gestion des assurances en France. L’étude analyse l’impact de ces aléas sur les transactions immobilières pour identifier les zones à forte exposition, anticiper les tendances du marché et fournir des outils d’aide à la décision pour les investisseurs et les pouvoirs publics.</p>
-        </div>
+        <p>Les risques naturels tels que le <strong>RGA</strong> et les <strong>IRN</strong> constituent un enjeu majeur pour la résilience climatique et le marché immobilier.</p>
       </div>
     </div>
   </section>
 
-  <!-- === Définitions et éléments clés === -->
+  <!-- Éléments clés — 2 colonnes -->
   <section id="definition">
-    <div class="wrap">
-      <div class="card">
-        <h3>Définitions et éléments clés :</h3>
-      </div>
-    </div>
-
-    <!-- === Colonnes face à face IRN / RGA === -->
     <div class="wrap two-col">
-      <!-- === Colonne IRN === -->
-      <div class="card" aria-labelledby="irn-title">
-        <h4 id="irn-title">IRN — Inondation par remontée de nappes</h4>
-        <p>L’IRN correspond à la possibilité que l’eau souterraine atteigne la surface du sol, les fondations ou les sous-sols des bâtiments lorsque la recharge dépasse la capacité d’évacuation (pluie, infiltration, saturation des sols). Les sols <em>peu perméables</em> (ex. argileux) sont particulièrement exposés.</p>
+      <!-- Colonne IRN -->
+      <div class="card equal-height">
+        <h4>IRN — Inondation par remontée de nappes</h4>
+        <p>L’IRN correspond à la possibilité que l’eau souterraine atteigne la surface du sol et les fondations des bâtiments.</p>
         <figure>
-          <img src="irn.png" alt="Schéma : remontée de nappes (IRN)">
-          <figcaption>Illustration du mécanisme d’IRN.</figcaption>
+          <img src="irn.png" alt="Schéma IRN">
         </figure>
         <details>
           <summary>Éléments clés récents</summary>
           <ul>
-            <li>Entre 2012 et 2018, les remontées de nappes ont représenté environ 1,6 % des dossiers de catastrophes naturelles reconnues.</li>
-            <li>Comparaison arrêtés 28 juin 2016 vs 22 juillet 2024 : Baziège (Haute-Garonne) est identifiée en CatNat IRN.</li>
+            <li>Entre 2012 et 2018 : 1,6 % des dossiers CatNat IRN.</li>
+            <li>Baziège (Haute-Garonne) identifiée en CatNat IRN.</li>
           </ul>
         </details>
-
-        <!-- === Analyse IRN === -->
-        <section class="callout" aria-labelledby="irn-rubrique">
-          <div class="callout__header">
-            <h5 id="irn-rubrique">Analyse des arrêtés Cat Nat IRN 2016 VS 2024</h5>
-          </div>
-          <p><strong>Cartographie des IRN par département :</strong> Seul le département concerné est la Haute-Garonne.</p>
-          <div class="callout__row">
-            <div class="iframe-wrap">
-              <iframe src="carte_interactive_arrete_inon_par_departements_2016.html" title="IRN 2016" width="100%" height="340" frameborder="0" loading="lazy"></iframe>
-            </div>
-            <div class="iframe-wrap">
-              <iframe src="carte_interactive_arrete_inon_par_departements_2024.html" title="IRN 2024" width="100%" height="340" frameborder="0" loading="lazy"></iframe>
-            </div>
-          </div>
-          <p><strong>Cartographie des IRN par commune :</strong> Le risque reste minoritaire mais à surveiller.</p>
-          <div class="callout__row" style="margin-top:.5rem">
-            <figure><img src="irn_2016.png" alt="IRN communes 2016"></figure>
-            <figure><img src="irn_2024.png" alt="IRN communes 2024"></figure>
-          </div>
-          <p class="attention">⚠️ Échelle inversée : les communes assujetties au risque sont en blanc.</p>
-        </section>
       </div>
 
-      <!-- === Colonne RGA === -->
-      <div class="card" aria-labelledby="rga-title">
-        <h4 id="rga-title">RGA — Retrait-gonflement des argiles</h4>
-        <p>Le RGA survient lorsque la teneur en eau des sols argileux varie : retrait en période sèche, gonflement après fortes pluies. Ces variations déforment progressivement le sol, causant des désordres (fissures) surtout sur les maisons individuelles.</p>
+      <!-- Colonne RGA -->
+      <div class="card equal-height">
+        <h4>RGA — Retrait-gonflement des argiles</h4>
+        <p>Le RGA survient lorsque la teneur en eau des sols argileux varie : retrait en période sèche, gonflement après fortes pluies.</p>
         <figure>
-          <img src="rga.png" alt="Schéma : retrait-gonflement des argiles (RGA)">
-          <figcaption>Illustration du mécanisme de RGA.</figcaption>
+          <img src="rga.png" alt="Schéma RGA">
         </figure>
         <details>
           <summary>Éléments clés récents</summary>
           <ul>
-            <li>Arrêté CCR 23 juillet 2024 : ~1654 communes reconnues CatNat RGA (vs 44 en 2016).</li>
+            <li>Arrêté CCR 23 juillet 2024 : ~1654 communes reconnues CatNat RGA.</li>
           </ul>
         </details>
-
-        <!-- === Analyse RGA === -->
-        <section class="callout" aria-labelledby="rga-rubrique">
-          <div class="callout__header">
-            <h5 id="rga-rubrique">Analyse des arrêtés Cat Nat RGA 2016 VS 2024</h5>
-          </div>
-          <p><strong>Cartographie RGA par département :</strong> En 2024, environ 81 % des départements sont concernés.</p>
-          <div class="callout__row">
-            <div class="iframe-wrap">
-              <iframe src="carte_interactive_arrete_par_departements_2016.html" title="RGA 2016" width="100%" height="340" frameborder="0" loading="lazy"></iframe>
-            </div>
-            <div class="iframe-wrap">
-              <iframe src="carte_interactive_arrete_par_departements_2024.html" title="RGA 2024" width="100%" height="340" frameborder="0" loading="lazy"></iframe>
-            </div>
-          </div>
-          <p><strong>Cartographie RGA par commune :</strong> Multiplication par ~37 du nombre de communes impactées.</p>
-          <div class="callout__row" style="margin-top:.5rem">
-            <figure><img src="rga_2016.png" alt="RGA communes 2016"></figure>
-            <figure><img src="rga2024.png" alt="RGA communes 2024"></figure>
-          </div>
-          <h5 style="margin-top:1rem">Zoom sur l'Yonne (89)</h5>
-          <p>Le nombre de communes touchées dans le 89 a fortement augmenté.</p>
-          <div class="callout__row" style="margin-top:.5rem">
-            <figure><img src="rga2_2016.png" alt="RGA Yonne 2016"></figure>
-            <figure><img src="rga2_2024.png" alt="RGA Yonne 2024"></figure>
-          </div>
-          <p class="attention">⚠️ Échelle inversée : communes à risque en blanc.</p>
-        </section>
       </div>
     </div>
   </section>
 
-  <!-- === Section Analyse Nationale et Départementale === -->
-  <section id="analyse-nationale">
+  <!-- Analyse nationale / départementale — 2 colonnes -->
+  <section id="analyse">
     <div class="wrap two-col">
-      <!-- === Colonne IRN === -->
-      <div class="card">
-        <h4>IRN — Répartition nationale</h4>
-        <p>18,6% du territoire français est fortement exposé au risque IRN. 48,6% exposition moyenne, 32,7% faible. Zones les plus touchées : Sud-Ouest.</p>
+      <!-- Analyse nationale -->
+      <div class="card equal-height">
+        <h4>Analyse nationale</h4>
+        <p>Exposition IRN : 18,6% fort, 48,6% moyen, 32,7% faible. Zones Sud-Ouest.</p>
         <div class="iframe-wrap">
           <iframe src="niveau_irn.png" title="Carte IRN" width="100%" height="340"></iframe>
         </div>
@@ -197,39 +130,69 @@
           <iframe src="histo_irn.png" title="Histogramme IRN" width="100%" height="340"></iframe>
         </div>
       </div>
-      <!-- === Colonne RGA === -->
-      <div class="card">
-        <h4>RGA — Répartition nationale</h4>
-        <p>19,5% du territoire français est fortement exposé au risque RGA. 34,5% exposition moyenne, 45,9% faible. Zones les plus touchées : Sud-Ouest et Nord-Ouest.</p>
+
+      <!-- Analyse départementale -->
+      <div class="card equal-height">
+        <h4>Analyse départementale</h4>
         <div class="iframe-wrap">
-          <iframe src="niveau_rga.png" title="Carte RGA" width="100%" height="340"></iframe>
+          <iframe src="carte_interactive_communes_risques_ter.html" title="Carte communes" width="100%" height="400"></iframe>
         </div>
         <div class="iframe-wrap">
-          <iframe src="histo_rga.png" title="Histogramme RGA" width="100%" height="340"></iframe>
+          <iframe src="evolution_prix_m2_communes_22_select_ter.html" title="Évolution prix" width="100%" height="400"></iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- === Section Analyse Départementale === -->
-  <section id="analyse-dep">
-    <div class="wrap two-col">
-      <div class="card">
-        <h4>Carte des risques — Communes</h4>
-        <div class="iframe-wrap">
-          <iframe src="carte_interactive_communes_risques_ter.html" title="Communes — Score risques" width="100%" height="400"></iframe>
-        </div>
+  <!-- Conclusion -->
+  <section id="conclusion">
+    <div class="wrap grid">
+      <div class="card three">
+        <h3>Pour l’assureur</h3>
+        <ul>
+          <li>Intégrer un <strong>coefficient de risque</strong> RGA/nappes.</li>
+          <li>Programmes de <strong>prévention ciblée</strong>.</li>
+        </ul>
       </div>
-      <div class="card">
-        <h4>Évolution des prix — Communes 22</h4>
-        <div class="iframe-wrap">
-          <iframe src="evolution_prix_m2_communes_22_select_ter.html" title="Évolution prix au m²" width="100%" height="400"></iframe>
-        </div>
+      <div class="card three">
+        <h3>Pour le marché immobilier</h3>
+        <ul>
+          <li>Améliorer l’<strong>information acheteurs</strong>.</li>
+          <li>Suivre la <strong>décote</strong> et ses déterminants.</li>
+        </ul>
+      </div>
+      <div class="card three">
+        <h3>Volet réglementaire</h3>
+        <ul>
+          <li><strong>Loi ELAN</strong> : études géotechniques obligatoires.</li>
+          <li>Dispositifs d’<strong>aide à la prévention</strong>.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  
+  <!-- Sources -->
+  <section id="sources">
+    <div class="wrap grid">
+      <div class="card">
+        <h3>Références & liens</h3>
+        <ul class="source">
+          <li>DVF : <a href="https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/">data.gouv.fr</a></li>
+          <li>Géorisques — RGA : <a href="https://www.georisques.gouv.fr/retrait-gonflement-des-argiles-projet-2025">georisques.gouv.fr</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © Institut des Actuaires — Dataviz 2025
+    </div>
+  </footer>
+</body>
+</html>
+
+
 <!-- Conclusion -->
 <section id="conclusion">
   <h2>Conclusion</h2>
